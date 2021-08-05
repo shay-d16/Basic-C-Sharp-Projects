@@ -44,6 +44,33 @@ namespace ConsoleAppAssignment
 
             while (!isGuessed);
 
+            Console.WriteLine("Now that you've guessed my birth month, can you guess the day of my birthday?");
+            string birthday = Console.ReadLine();
+            bool guessDate = birthday == "3rd";
+
+            while (!guessDate)
+            {
+                switch (birthday)
+                {
+                    case "14th":
+                        Console.WriteLine("You guessed the 14th. Sadly my birthday is not on Valentine's Day. Guess again?");
+                        birthday = Console.ReadLine();
+                        break;  
+                    case "29th":
+                        Console.WriteLine("It would be so cool to be born on Leap Day! Sadly, you are incorrect. Guess again?");
+                        birthday = Console.ReadLine();
+                        break;
+                    case "3rd":
+                        Console.WriteLine("Wow! You guessed it! That's awesome!");
+                        guessDate = true;
+                        break;
+                    default:
+                        Console.WriteLine("You guessed wrong. Guess again?");
+                        birthday = Console.ReadLine();
+                        break;
+                }
+            }
+
             Console.ReadLine();
         }
     }
