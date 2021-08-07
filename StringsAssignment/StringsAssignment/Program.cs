@@ -19,6 +19,17 @@ namespace StringsAssignment
 
             StringBuilder sb = new StringBuilder();
 
+            sb.Append("As a kid, I really loved the color pink, ");
+            sb.Append("but once I hit my teenage years, ");
+            sb.Append("I started to think the color itself signified ");
+            sb.Append("childlike innocence. So I stopped liking it so much. ");
+            sb.Append("Now as an adult in my mid-twenties, ");
+            sb.Append("I have fully embraced my love for pink! ");
+            sb.Append("It doesn't really matter what anyone thinks of it ");
+            sb.Append("as long as it makes me happy!");
+
+            Console.WriteLine(sb);
+
 
 
 
