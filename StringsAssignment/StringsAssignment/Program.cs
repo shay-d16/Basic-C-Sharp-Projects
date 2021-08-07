@@ -14,8 +14,11 @@ namespace StringsAssignment
             string name = "Shay, ";
             string favColor = "and my favorite color is ";
             string color = "pink!";
-            color = color.ToUpper();
-            Console.WriteLine(intro + name + favColor + color);
+            color = color.ToUpper(); // convert this string to uppercase letters
+            Console.WriteLine(intro + name + favColor + color); // concatenate these strings accordingly.
+
+            StringBuilder sb = new StringBuilder();
+
 
 
 
