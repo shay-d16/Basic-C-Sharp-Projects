@@ -15,15 +15,15 @@ namespace ConsoleAppArrayAssignment
             stringArray[3] = "This string has an index of 3";
 
             Console.WriteLine("Select an index number from 0-3 to display a string");
-            int selectIndex = Convert.ToInt32(Console.ReadLine());
+            
                 if (true)
                 {
+                    int selectIndex = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine(stringArray[selectIndex]);
                 }
                 else
                 {
                     Console.WriteLine("Sorry that index does not exist in this instance");
-
                 }
             
 
