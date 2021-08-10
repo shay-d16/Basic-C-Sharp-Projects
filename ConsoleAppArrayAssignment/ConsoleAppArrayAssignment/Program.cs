@@ -16,7 +16,25 @@ namespace ConsoleAppArrayAssignment
 
             Console.WriteLine("Select an index number from 0-3 to display a string");
             int selectIndex = Convert.ToInt32(Console.ReadLine());
+                if (true)
+                {
+                    Console.WriteLine(stringArray[selectIndex]);
+                }
+                else
+                {
+                    Console.WriteLine("Sorry that index does not exist in this instance");
+
+                }
+            
+
+            int[] numArray = { 5, 6, 7, 8, 9 };
+            Console.WriteLine("\nSelect an index number from 0-4 to display an integer from an array");
+            int selectNum = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(numArray[selectNum]);
+
             Console.ReadLine();
+
+
         }
     }
 }
