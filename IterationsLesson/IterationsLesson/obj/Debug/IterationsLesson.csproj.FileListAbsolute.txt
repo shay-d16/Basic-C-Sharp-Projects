@@ -1,0 +1,7 @@
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\IterationsLesson\IterationsLesson\bin\Debug\IterationsLesson.exe.config
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\IterationsLesson\IterationsLesson\bin\Debug\IterationsLesson.exe
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\IterationsLesson\IterationsLesson\bin\Debug\IterationsLesson.pdb
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\IterationsLesson\IterationsLesson\obj\Debug\IterationsLesson.csproj.AssemblyReference.cache
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\IterationsLesson\IterationsLesson\obj\Debug\IterationsLesson.csproj.CoreCompileInputs.cache
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\IterationsLesson\IterationsLesson\obj\Debug\IterationsLesson.exe
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\IterationsLesson\IterationsLesson\obj\Debug\IterationsLesson.pdb
