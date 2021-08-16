@@ -35,8 +35,8 @@ class Program
             Console.WriteLine("Wow, you're in your twenties! Oh, to be young!");
             break;
         }   
-        while (age < 29 && age <= 39 )
-        {   //While the users age is
+        while (age > 29 && age <= 39 )
+        {   //While the users age is less than 29 AND less than or equal to 39, print this:
             Console.WriteLine("You're in your thirties!");
             break;
         }
@@ -58,12 +58,27 @@ class Program
             Console.WriteLine("Oh wow! You and your best friend are the same age!");
         }
 
-        Console.WriteLine("Enter the names of you three closest friends:");
-        string friend1 = 
+        Console.WriteLine("\nNow, type any letter to search through my list of friends to find any name that contains that letter:");
+        string searchList = Console.ReadLine();
+
+        List<string> friendsList = new List<string>();
+        friendsList.Add("Helayna");
+        friendsList.Add("Jill");
+        friendsList.Add("Brooke");
+        friendsList.Add("Jett");
+        friendsList.Add("Scott");
 
         
+        foreach (string friend in friendsList)
+        {
+            friend.Contains(searchList);
+            Console.WriteLine(friend);
+            
+        }
         
+       
         
+
         Console.ReadLine();
     }
 }
