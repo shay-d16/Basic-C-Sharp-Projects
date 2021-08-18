@@ -58,8 +58,6 @@ class Program
             Console.WriteLine("Oh wow! You and your best friend are the same age!");
         }
 
-        Console.WriteLine("\nNow, type any letter to search through my list of friends to find any name that contains that letter:");
-        string searchList = Console.ReadLine();
 
         List<string> friendsList = new List<string>();
         friendsList.Add("Helayna");
@@ -68,11 +66,22 @@ class Program
         friendsList.Add("Jett");
         friendsList.Add("Scott");
 
-        
+        Console.WriteLine("\nNow, type in a number from 0 to 4 to search through my list of friends to find their names based on their index number:");
+        int searchList = Convert.ToInt32(Console.ReadLine());
+
         foreach (string friend in friendsList)
         {
-            friend.Contains(searchList);
-            Console.WriteLine(friend);
+            if (true)
+            {
+                Console.WriteLine(friendsList[searchList]);
+                break;
+            }
+            else
+            {
+                Console.WriteLine("This input doesn't exist in this list.");
+            }
+            
+            
             
         }
         
