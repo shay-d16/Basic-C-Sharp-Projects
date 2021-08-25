@@ -66,24 +66,46 @@ class Program
         friendsList.Add("Jett");
         friendsList.Add("Scott");
 
-        Console.WriteLine("\nNow, type in a number from 0 to 4 to search through my list of friends to find their names based on their index number:");
-        int searchList = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("\nNow, type in some text to search my list of friends and the index of each item in the list:");
+        string searchList = Console.ReadLine();
 
-        foreach (string friend in friendsList)
+        if (friendsList.Contains(searchList)) //If friendsList contains text from the user input of searchList:
         {
-            if (true)
+            foreach (string item in friendsList) //set the variable for items in this list 
             {
-                Console.WriteLine(friendsList[searchList]);
-                break;
+                if (item == searchList) //Compare to see if the item is equal to user input
+                {
+                    Console.WriteLine(friendsList.IndexOf(searchList));//If true, display the index of the item that matches the user input.
+                }
             }
-            else
-            {
-                Console.WriteLine("This input doesn't exist in this list.");
-            }
-            
-            
-            
         }
+        else //If the user input doesn't match any items in the list, display this message:
+        {
+            Console.WriteLine("List does not contain this item.");
+        }
+
+
+        Console.WriteLine("\nAnd now, I have a list containing the names of my siblings. \nTheir names are Malik, Kaylani, Jordan, and Skyla. \nType in a name to see which of these appears twice in the list:");
+        string siblingNames = Console.ReadLine();
+        List<string> siblingsList = new List<string> {"Malik", "Kaylani", "Jordan", "Skyla", "Jordan" };
+
+        if (siblingsList.Contains(siblingNames))
+        {
+            foreach(string sibling in siblingsList)
+            {
+                if (sibling == siblingNames)
+                {
+                    Console.WriteLine(siblingsList.IndexOf(siblingNames));
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("List does not contain this item");
+        }
+
+
+        
         
        
         
