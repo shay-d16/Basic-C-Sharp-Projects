@@ -86,23 +86,32 @@ class Program
 
 
         Console.WriteLine("\nAnd now, I have a list containing the names of my siblings. \nTheir names are Malik, Kaylani, Jordan, and Skyla. \nType in a name to see which of these appears twice in the list:");
-        string siblingNames = Console.ReadLine();
+        string searchSibs = Console.ReadLine();
+
+
         List<string> siblingsList = new List<string> {"Malik", "Kaylani", "Jordan", "Skyla", "Jordan" };
 
-        if (siblingsList.Contains(siblingNames))
+        List<string> myList = new List<string>();
+        List<string> duplicates = new List<string>();
+
+        if(siblingsList.Contains(searchSibs))
         {
-            foreach(string sibling in siblingsList)
+            for (int i = 0; siblingsList.Count > i; i++)
             {
-                if (sibling == siblingNames)
+                if (siblingsList[i] == searchSibs)
                 {
-                    Console.WriteLine(siblingsList.IndexOf(siblingNames));
+                    Console.WriteLine(i);
                 }
             }
         }
         else
         {
-            Console.WriteLine("List does not contain this item");
+            Console.WriteLine("List does not conatin this item.");
         }
+
+        
+
+          
 
 
         
