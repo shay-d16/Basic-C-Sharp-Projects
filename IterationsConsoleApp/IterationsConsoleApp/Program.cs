@@ -6,6 +6,7 @@ class Program
 {
     static void Main()
     {
+        //PART 1
         // USER INPUT QUESTIONS
         Console.WriteLine("What is your name?");
         string name = Console.ReadLine();
@@ -59,7 +60,7 @@ class Program
             Console.WriteLine("Oh wow! You and your best friend are the same age!");
         }
 
-
+        //PART 4
         List<string> friendsList = new List<string>();
         friendsList.Add("Helayna");
         friendsList.Add("Jill");
@@ -85,7 +86,7 @@ class Program
             Console.WriteLine("List does not contain this item.");
         }
 
-
+        //PART 5
         Console.WriteLine("\nAnd now, I have a list containing the names of my siblings. \nTheir names are Malik, Kaylani, Jordan, and Skyla. \nType in a name to see which of these appears twice in the list:");
         string searchSibs = Console.ReadLine();
 
@@ -107,22 +108,22 @@ class Program
             Console.WriteLine("List does not conatin this item.");
         }
 
-        Console.WriteLine("Lastly, I've created a list of cities I have lived in: ");
         
-   
+        //PART 6 
+        Console.WriteLine("Lastly, I've created a list of cities I have lived in: ");
 
         List<string> citiesList = new List<string> { "Riverside,CA", "San Diego, CA", "Los Angeles, CA", "Lake Elsinore, CA", "Lakeland, FL", "San Diego, CA", "Federal Way, WA" };
-        List<string> duplicates = new List<string>();
+        List<string> duplicates = new List<string>(); //Create a new list for the duplicate strings
         
-            foreach(string c in citiesList)
+            foreach(string c in citiesList) 
             {
                 if(duplicates.Contains(c))
                 {
-                    Console.WriteLine("This has already been repeated " + c);
+                    Console.WriteLine("(This has already been repeated) " + c);
                 }
                 else
                 {
-                    Console.WriteLine(c + " has not been repeated");
+                    Console.WriteLine(c + " (has not been repeated)");
                 }
                 duplicates.Add(c);                               
             }
