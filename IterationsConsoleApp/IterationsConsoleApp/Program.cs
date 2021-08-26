@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 class Program
 {
@@ -91,12 +92,9 @@ class Program
 
         List<string> siblingsList = new List<string> {"Malik", "Kaylani", "Jordan", "Skyla", "Jordan" };
 
-        List<string> myList = new List<string>();
-        List<string> duplicates = new List<string>();
-
         if(siblingsList.Contains(searchSibs))
         {
-            for (int i = 0; siblingsList.Count > i; i++)
+            for (int i = 0; siblingsList.Count > i; i++) //Use a for loop to iterate through the list
             {
                 if (siblingsList[i] == searchSibs)
                 {
@@ -109,10 +107,25 @@ class Program
             Console.WriteLine("List does not conatin this item.");
         }
 
+        Console.WriteLine("Lastly, I've created a list of cities I have lived in: ");
         
+   
 
-          
-
+        List<string> citiesList = new List<string> { "Riverside,CA", "San Diego, CA", "Los Angeles, CA", "Lake Elsinore, CA", "Lakeland, FL", "San Diego, CA", "Federal Way, WA" };
+        List<string> duplicates = new List<string>();
+        
+            foreach(string c in citiesList)
+            {
+                if(duplicates.Contains(c))
+                {
+                    Console.WriteLine("This has already been repeated " + c);
+                }
+                else
+                {
+                    Console.WriteLine(c + " has not been repeated");
+                }
+                duplicates.Add(c);                               
+            }
 
         
         
