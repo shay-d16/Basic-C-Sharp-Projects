@@ -30,16 +30,19 @@ namespace TwentyOneGame
         {
             Deck deck = new Deck();
             //We've instantiated an object called 'deck' and we've assigned it to the 
-            //variable 'deck.' What we have here is an empty object with no values assigned
+            //variable "deck." What we have here is an empty object with no values assigned
             //to it.
 
             ////Now, upon instantiating the 'deck' object, which has a property 'Cards,'
             ////the 'Cards' List should have 52 'Cards' in it, one of each card in a standard 
             ////deck of cards.
 
-            deck = Shuffle(deck); 
+            int timesShuffled = 0;
+
+            deck = Shuffle(deck, out timesShuffled, 3);
+            //deck = Shuffle(deck); 
             //This takes the 'deck' as a parameter, and returns a 'deck,' reassigning it to that
-            //variable. (See Line 114).
+            //variable. (See Line 118).
 
             //----------------------------------------------------------------------------------------
             //deck.Cards = new List<Card>();
@@ -73,12 +76,13 @@ namespace TwentyOneGame
             {
                 Console.WriteLine(card.Face + " of " + card.Suit);
             }
-            Console.WriteLine(deck.Cards.Count);            
+            Console.WriteLine(deck.Cards.Count);
+            Console.WriteLine("Times Shuffled: {0}", timesShuffled);//{0} is for the assigned variable 'timesShuffled'
             Console.ReadLine();
         }
 
         //Write this method below the 'Main' method.
-        public static Deck Shuffle(Deck deck)
+        public static Deck Shuffle(Deck deck, out int timesShuffled, int times = 1)
         //We first write 'public' to make the method accessible everywhere, 'static' because
         //we don't want to have to create an object Program before calling this method, 'Deck'
         //which is the type of data it's returning, 'Shuffle' is the name of the method, and
@@ -86,36 +90,52 @@ namespace TwentyOneGame
         //Shuffling is supposed to be random, different each time. C# has a 'Random' class
         //for this instance.
         {
-            //Before the 'random' object, we're going to create a temporary List where we are
-            //going to store our shuffled items:
-            List<Card> TempList = new List<Card>(); //right now this list is empty.
+            timesShuffled = 0;
+            for (int i = 0; i < times; i++)
+            {
+                timesShuffled++;
+                //Before the 'random' object, we're going to create a temporary List where we are
+                //going to store our shuffled items:
+                List<Card> TempList = new List<Card>(); //right now this list is empty.
 
-            Random random = new Random();
-            //The object 'random' now has methods associated with it (i.e. we could write 
-            //'random.Next' which would give us a random number between certain integers that we
-            //wanted).
+                Random random = new Random();
+                //The object 'random' now has methods associated with it (i.e. we could write 
+                //'random.Next' which would give us a random number between certain integers that we
+                //wanted).
 
-            //Next we'll create a while loop
-            while (deck.Cards.Count > 0)
+                //Next we'll create a while loop
+                while (deck.Cards.Count > 0)
                 //The idea here is that we are going to grab a random card, take it out of the 
                 //deck and put it into a temporary deck. We are going to do that until
                 //'deck.Card.Count reaches 0, which is when the while loop ends.
-            {
-                int randomIndex = random.Next(0, deck.Cards.Count);
-                //'random.Next' takes a minimum and maximum value, which in this case is 0 - 52.
-                TempList.Add(deck.Cards[randomIndex]);
-                //We'll add the randomIndex to our Temporary List. Remember the [randomIndex]
-                //is a 'zero based index.'
-                deck.Cards.RemoveAt(randomIndex);
-                //'.RemoveAt' is a function of the List method. Here, we added it to the Temporary
-                //List and deleted it from the List of 'Cards,' which we do until there are no cards
-                //left.
+                {
+                    int randomIndex = random.Next(0, deck.Cards.Count);
+                    //'random.Next' takes a minimum and maximum value, which in this case is 0 - 52.
+                    TempList.Add(deck.Cards[randomIndex]);
+                    //We'll add the randomIndex to our Temporary List. Remember the [randomIndex]
+                    //is a 'zero based index.'
+                    deck.Cards.RemoveAt(randomIndex);
+                    //'.RemoveAt' is a function of the List method. Here, we added it to the Temporary
+                    //List and deleted it from the List of 'Cards,' which we do until there are no cards
+                    //left.
+                }
+                //Then we take our 'deck' of 'Cards,' which is now empty and we assign the 'TempList' to
+                //it as a value, and we 'return' the deck.
+                deck.Cards = TempList;
             }
-            //Then we take our 'deck' of 'Cards,' which is now empty and we assign the 'TempList' to
-            //it as a value, and we 'return' the deck.
-            deck.Cards = TempList;
             return deck;
             //This is the method, but now we have to 'call' this method (See line 40).
         }
+        //"Method overloading" is the term for being able to create multiple methods with the same name as 
+        //long as they are slightly different.
+
+        //public static Deck Shuffle(Deck deck, int times)
+        //{
+        //    for (int i = 0; i < times; i++)
+        //    {
+        //        deck = Shuffle(deck);
+        //    }
+        //    return deck;
+        //}
     }
 }
