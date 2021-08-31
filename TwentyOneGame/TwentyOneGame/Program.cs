@@ -26,7 +26,7 @@ namespace TwentyOneGame
 
             //We want a method that takes a List of cards and 'returns' a shuffled deck of cards. So 
             //our method would have a 'return' type of 'Deck'; it would also take a 'deck' as a 
-            //type of 'argument.' So we take in a 'deck' and return a 'Deck' (See Line 81).
+            //type of 'argument.' So we take in a 'deck' and return a 'Deck' (See Line 75).
         {
             Deck deck = new Deck();
             //We've instantiated an object called 'deck' and we've assigned it to the 
@@ -42,7 +42,7 @@ namespace TwentyOneGame
             deck = Shuffle(deck, out timesShuffled, 3);
             //deck = Shuffle(deck); 
             //This takes the 'deck' as a parameter, and returns a 'deck,' reassigning it to that
-            //variable. (See Line 118).
+            //variable. (See Line 128).
 
             //----------------------------------------------------------------------------------------
             //deck.Cards = new List<Card>();
@@ -89,6 +89,12 @@ namespace TwentyOneGame
         //'Deck deck' is the paramters for the data type and it's variable name.
         //Shuffling is supposed to be random, different each time. C# has a 'Random' class
         //for this instance.
+
+        //You can create an optional parameter when you assign a parameter a default value. 
+        //In the code about, 'times' equals 1. But if 'times' is not specified by user input or the
+        //user just enters 'deck' as the parameter, the program will just assume that it equals the 
+        //default value of 1.
+
         {
             timesShuffled = 0;
             for (int i = 0; i < times; i++)
@@ -130,12 +136,15 @@ namespace TwentyOneGame
         //long as they are slightly different.
 
         //public static Deck Shuffle(Deck deck, int times)
-        //{
-        //    for (int i = 0; i < times; i++)
+        //
+        //    for (int i = 0; i < times; i++) 
+              //we're creating a for loop here to loop through the 'Shuffle()' method however many times the dealer decides.
         //    {
         //        deck = Shuffle(deck);
         //    }
         //    return deck;
         //}
+        //This is a lot of code though, and instead of overloading methods, there's a way to actually make the 'times'
+        //parameter optional.
     }
 }
