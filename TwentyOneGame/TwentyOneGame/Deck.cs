@@ -8,10 +8,7 @@ namespace TwentyOneGame
 {
     public class Deck
     {
-        public Deck()
-        //Constructors always go at the top of the class, before the properties.
-        //Remember a constructor is a way of assigning values to an object immediately
-        //upon creation. So this method is called as soon as an object is created.
+        public Deck()       
         {
             //1. The first thing a constructor does is instantiate it's property 'Cards'
             // as an empty List of 'Cards.'
@@ -34,35 +31,41 @@ namespace TwentyOneGame
                 "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"
             };
 
-            //3. We end up with two Lists: One with 4 values, and the other with 13.
-
-            //Instead of listing every single card in the deck one by one, we will use
-            //a 'nested' foreach loop. For each 'Face' in that list of 13, we need to loop
-            //through it 4 times, once for each 'Suit.' The idea is to loop through both of these 
-            //lists in order to generate a deck of 52 cards, one of each combination.
-
-            //4. For each of the items in the first List 'Faces,' we loop through 4 times.
+          
             foreach(string face in Faces)
             {
             
                 foreach(string suit in Suits)
-                //So for each item in the 'Faces' List, we will loop through the items in the
-                //'Suits' List.
-
-                //5. During each loop, we create a 'card' and we assign the 'Suit' property the 
-                // value of 'suit.'
+                
                 {
                     Card card = new Card();
                     card.Suit = suit;
                     card.Face = face;
-                    Cards.Add(card);
-                 //6. We add the new card we created into the 'Cards' List at the top (line 18). 
-                 //7. The 'card' variable only exists inside of each loop. Once the loop
-                 // ends, the 'card' variable doesn't exist anymore.
+                    Cards.Add(card);                 
                 }
             }
-        }
-        
+        }        
         public List<Card> Cards { get; set; }
+
+        public void Shuffle(int times = 1)
+        {
+            
+            for (int i = 0; i < times; i++)
+            {                
+                List<Card> TempList = new List<Card>(); //right now this list is empty.
+
+                Random random = new Random();
+                while (Cards.Count > 0)
+                {
+                    int randomIndex = random.Next(0, Cards.Count);
+                    //'random.Next' takes a minimum and maximum value, which in this case is 0 - 52.
+                    TempList.Add(Cards[randomIndex]);
+                    //We'll add the randomIndex to our Temporary List. Remember the [randomIndex]
+                    //is a 'zero based index.'
+                    Cards.RemoveAt(randomIndex);          
+                }
+                Cards = TempList;
+            } 
+        }
     }
 }

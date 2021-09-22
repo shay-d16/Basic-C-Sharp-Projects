@@ -1,0 +1,13 @@
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\ClassAssignment\ClassAssignment\bin\Debug\netcoreapp3.1\ClassAssignment.exe
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\ClassAssignment\ClassAssignment\bin\Debug\netcoreapp3.1\ClassAssignment.deps.json
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\ClassAssignment\ClassAssignment\bin\Debug\netcoreapp3.1\ClassAssignment.runtimeconfig.json
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\ClassAssignment\ClassAssignment\bin\Debug\netcoreapp3.1\ClassAssignment.runtimeconfig.dev.json
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\ClassAssignment\ClassAssignment\bin\Debug\netcoreapp3.1\ClassAssignment.dll
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\ClassAssignment\ClassAssignment\bin\Debug\netcoreapp3.1\ClassAssignment.pdb
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\ClassAssignment\ClassAssignment\obj\Debug\netcoreapp3.1\ClassAssignment.csproj.AssemblyReference.cache
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\ClassAssignment\ClassAssignment\obj\Debug\netcoreapp3.1\ClassAssignment.AssemblyInfoInputs.cache
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\ClassAssignment\ClassAssignment\obj\Debug\netcoreapp3.1\ClassAssignment.AssemblyInfo.cs
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\ClassAssignment\ClassAssignment\obj\Debug\netcoreapp3.1\ClassAssignment.csproj.CoreCompileInputs.cache
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\ClassAssignment\ClassAssignment\obj\Debug\netcoreapp3.1\ClassAssignment.dll
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\ClassAssignment\ClassAssignment\obj\Debug\netcoreapp3.1\ClassAssignment.pdb
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\ClassAssignment\ClassAssignment\obj\Debug\netcoreapp3.1\ClassAssignment.genruntimeconfig.cache
