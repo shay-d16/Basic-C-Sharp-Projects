@@ -22,9 +22,10 @@ namespace ClassAssignment
             int userInput1 = Convert.ToInt32(Console.ReadLine()); //Convert user input from string to integer.
             math.mathMethod(userInput1); //Call the method and pass in the user input as it's parameter
 
-            Console.WriteLine("Enter another integer: ");
-            string userInput2 = Console.ReadLine();
-            math.mathMethod(userInput2);
+            Console.WriteLine("Now enter two integers to add together: ");
+            int userInput2 = Convert.ToInt32(Console.ReadLine());
+            int userInput3 = Convert.ToInt32(Console.ReadLine());
+            math.mathMethod(userInput2, userInput3);            
 
             Console.ReadLine();
         }

@@ -10,13 +10,26 @@ namespace ClassAssignment
         public void mathMethod(int number1)
         {
             int answer = number1 / 2;
-            Console.WriteLine(number1 + " divided by 2 is " + answer);
+            Console.WriteLine(number1 + " divided by 2 equals " + answer);
+
+        }       
+
+        public void mathMethod(int number2, int number3)//method overload
+        {
+            int answer2 = number2 + number3;
+            Console.WriteLine(number2 + " plus " + number3 + " equals " + answer2);
         }
 
-        public void mathMethod(string number2) //method overload
+
+        public void OutArgMethod(out int number4, out int number5) //method with output parameters
         {
-            int answer2 = Convert.ToInt32(number2) / 2; //Convert string to integer and divide than by 2
-            Console.WriteLine(number2 + " divided by 2 is " + answer2);
+            number4 = 10;
+            number5 = 2;
+
+            int answer3 = number4 / number5;
+
+            Console.WriteLine(number4 + " divided by " + number5 + " is " + answer3);
+            
         }
     }
 
