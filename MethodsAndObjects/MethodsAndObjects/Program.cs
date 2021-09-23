@@ -22,7 +22,7 @@ namespace MethodsAndObjects
         static void Main(string[] args)
         {
             //Instantiate and initialize 'employee' object and it's new values.
-            Person employee = new Person() { FirstName = "Sample", LastName = "Student" };            
+            Employee employee = new Employee() { FirstName = "Sample", LastName = "Student" };            
 
             //Call the superclass SayName() method on the 'employee' object.
             employee.SayName();
