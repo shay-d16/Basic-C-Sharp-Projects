@@ -11,6 +11,18 @@ namespace TwentyOneGame
         static void Main(string[] args)
 
         {
+            TwentyOneGame game = new TwentyOneGame();
+            //Through inhertiance, you are able to access to the properties and methods of the "game" object/'Game' class.
+            game.Players = new List<string>() { "Shay", "Alex", "Helayna" };
+            //We've inherited from 'Game' in the 'TwentyOneGame' class, and have access to the 'Players' property,
+            //which we've instantiated with some values.
+            game.ListPlayers();
+            //We called the 'superclass' method (a method from the class you're inheriting from).
+            //'Game' in this instance is the superclass.
+            game.Play();
+         
+
+
             Deck deck = new Deck();           
 
             deck.Shuffle(3);
@@ -21,8 +33,6 @@ namespace TwentyOneGame
             }
             Console.WriteLine(deck.Cards.Count);
             Console.ReadLine();
-        }                           
-        //"Method overloading" is the term for being able to create multiple methods with the same name as 
-        //long as they are slightly different.
+        }                                   
     }
 }
