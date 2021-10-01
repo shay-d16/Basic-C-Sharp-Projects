@@ -14,6 +14,7 @@ namespace TwentyOneGame
         static void Main(string[] args)
 
         {
+            //--------------------------------------- INHERITANCE -------------------------------------------------
             //List<Game> games = new List<Game>();
             //TwentyOneGame game = new TwentyOneGame();
             ////Through inhertiance, you are able to access to the properties and methods of the "game" object/'Game' class.
@@ -25,6 +26,7 @@ namespace TwentyOneGame
             ////'Game' in this instance is the superclass.
             //game.Play();
 
+            //---------------------------------------- POLYMORPHISM ------------------------------------------------
             //Game game = new TwentyOneGame();
             //This is a classic example of polymorphism. 
             //One object ('TwentyOneGame') can morph into another "higher order" object, meaning 'TwentyOneGame' 
@@ -33,10 +35,24 @@ namespace TwentyOneGame
             //a list of all active games. Lists can only take one data type, so to put all these different games into 
             //list we'd use polymorphism.
 
-            //games.Add(game);//We're able to add a 'TwentyOneGame' into a list of games. 
+            //games.Add(game);//We're able to add a 'TwentyOneGame' into a list of games.
+            
             //Using polymorphism we are able to create a list of games that encompass all of our games even though
             //they were technically different data types.
 
+            //---------------------------------------- ABSTRACT CLASSES --------------------------------------------
+            //TwentyOneGame game = new TwentyOneGame();
+            //game.Players = new List<string>() { "Shay", "Helayna", "Alex" };
+            //game.ListPlayers();
+            //Console.ReadLine();
+
+            //-------------------------------------------- INTERFACES ----------------------------------------------
+            //An interface is very similar to an abstract class in that there are no implemtation details in an interface
+            //So why not just use an abstract class? The biggest reason is that the .NET framework does not support 
+            //multiple inheritance; meaning, one class can inherit from ONLY one other class.
+            //To create an interface, right-click on the project, select "Add," choose "Class," and then "Interface."
+            //The naming convention for interfaces is to start with an uppercase "I" (i.e. IWalkAway), and this is how you will be
+            //able to tell that this is an interface
 
             Deck deck = new Deck();           
 

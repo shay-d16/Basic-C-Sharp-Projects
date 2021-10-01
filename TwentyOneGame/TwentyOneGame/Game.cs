@@ -22,7 +22,13 @@ namespace TwentyOneGame
         //is state that any class inheriting this class must implement this method, like a contract between the base class
         //'Game' and the inheriting class 'TwentyOneGame'. TwentyOneGame now has to define that method somewhere in it's
         //class with the exact same name, return type, and parameters.
-        public void ListPlayers()
+        
+        //What if we wanted to have our own implementation of 'ListPlayers'? 
+        //i.e. We want it to say "21 Players" inside of it. How would we do that when it's pretty "locked down" inside
+        //of this base class? You'd use the 'virtual' keyword.
+        public virtual void ListPlayers()
+            //A virtual method inside of an abstract class means that this method gets inherited by an inheriting class
+            //but it has the ability to override it. Virtual methods have implementation, but they can be overridden.
         {
             foreach (string player in Players)
             {
