@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OperatorOverloadingAssignment
+{
+    public class Employee : Person
+    {
+        
+
+       
+
+        public static Employee operator== (Employee employee1, Employee employee2)
+        {
+            if (employee1.ID == employee2.ID)
+            {
+                Console.WriteLine("These two employees have matching ID numbers.");
+            }
+        }
+    }
+}

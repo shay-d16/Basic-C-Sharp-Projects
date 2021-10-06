@@ -13,7 +13,7 @@ namespace TwentyOneGame
         //Twenty One, Poker). Game is a perfect example of a 'base' class, which another word for an abstract class.
     {
 
-        public List<string> Players { get; set; }
+        public List<Player> Players { get; set; }
         public string Name { get; set; }
         public string Dealer { get; set; }
 
@@ -30,7 +30,7 @@ namespace TwentyOneGame
             //A virtual method inside of an abstract class means that this method gets inherited by an inheriting class
             //but it has the ability to override it. Virtual methods have implementation, but they can be overridden.
         {
-            foreach (string player in Players)
+            foreach (Player player in Players)
             {
                 Console.WriteLine(player);
             }

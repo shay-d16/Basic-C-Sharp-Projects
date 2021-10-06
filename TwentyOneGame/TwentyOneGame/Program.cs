@@ -36,7 +36,7 @@ namespace TwentyOneGame
             //list we'd use polymorphism.
 
             //games.Add(game);//We're able to add a 'TwentyOneGame' into a list of games.
-            
+
             //Using polymorphism we are able to create a list of games that encompass all of our games even though
             //they were technically different data types.
 
@@ -53,6 +53,42 @@ namespace TwentyOneGame
             //To create an interface, right-click on the project, select "Add," choose "Class," and then "Interface."
             //The naming convention for interfaces is to start with an uppercase "I" (i.e. IWalkAway), and this is how you will be
             //able to tell that this is an interface
+
+            //----------------------------------------- OPERATOR OVERLOADING ------------------------------------------
+            //Method overloading is when you can make a method with the same name but different signature (i.e. taking
+            //a different number of parameters or return a different data type), and this same thing can be done with
+            //operators (like +, -, *, /). Why would you want to overload an operator? Why would you want to make your
+            //own implementation of + or - when they already seem pretty straight forward?
+            //In this case, the operators would be specific to an object you've created. For example, what if you wanted 
+            //to add two objects together? Or if you just wanted to use the plus sign to add a 'Player' to the game?
+            
+            Game game = new TwentyOneGame();
+            //We're actually using polymorphism again here, becuase notice that 'Player' returns a 'game.' We're enabling
+            //the ability to add a 'player' to a 'game,' and because we're using 'Game' and not 'TwentyOneGame' this 
+            //overloaded operator will work even if later down the road we create a 'PokerGame' or 'SolitaireGame' we can
+            //still use the plus operator to add a 'player' to that game. This is polymorphism at work.
+
+            //When we try to run the program without this next line of code, we get an 'Exception Unhandled' error message 
+            //that states: "System.NullReferenceException: 'Object reference not set to an instance of an object.' 
+            //TwentyOne.Game.Players.get returned null."
+            //This is because the 'Game' class has this 'List<Player>' property, and lists HAVE to be instantiated
+            //first. You have to CREATE a list before you can add to it. We have this 'TwentyOneGame' class which
+            //inherits from the 'Game' class, and therefore has the 'List<Player>' property, yet we are trying to add
+            //a 'player' to a list that hasn't been instantiated. So we'll add:
+            game.Players = new List<Player>();
+            //Now, we've instantiated the list and can add 'players' to it.
+            Player player = new Player();
+            player.Name = "Shay";
+            
+            game = game + player;
+            //The short-hand way to write this is: 'game += player'
+
+            //Remember, the parameters are a 'game' and a 'player' and it returns a 'game.' So this in a way is our 
+            //method
+            //Instead of commenting out the bottom code, just set a breakpoint at 'Deck deck = new Deck();' so the 
+            //program will stop running at that point so that we can examine these above variables
+            game = game - player; //short-hand: 'game -= player'
+
 
             Deck deck = new Deck();           
 
