@@ -8,16 +8,14 @@ namespace OperatorOverloadingAssignment
 {
     public class Employee : Person
     {
-        
 
-       
-
-        public static Employee operator== (Employee employee1, Employee employee2)
+        public static bool operator ==(Employee employee1, Employee employee2)
         {
-            if (employee1.ID == employee2.ID)
-            {
-                Console.WriteLine("These two employees have matching ID numbers.");
-            }
+            return true;
+        }
+        public static bool operator !=(Employee employee1, Employee employee2)
+        {
+            return false;
         }
     }
 }

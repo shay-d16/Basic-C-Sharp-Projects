@@ -14,9 +14,12 @@ namespace OperatorOverloadingAssignment
 
         static void Main(string[] args)
         {
+
             Employee employee1 = new Employee() { firstName="Shay", lastName="Davis", ID=00001 };
             Employee employee2 = new Employee() { firstName="Helayna", lastName="Curtis", ID=00002 };
 
+            Console.WriteLine(employee1.ID == employee2.ID);
+            Console.ReadLine();
             
         }
     }

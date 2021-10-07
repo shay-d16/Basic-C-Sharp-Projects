@@ -1,0 +1,7 @@
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\OperatorOverloadingAssignment\OperatorOverloadingAssignment\bin\Debug\OperatorOverloadingAssignment.exe.config
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\OperatorOverloadingAssignment\OperatorOverloadingAssignment\bin\Debug\OperatorOverloadingAssignment.exe
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\OperatorOverloadingAssignment\OperatorOverloadingAssignment\bin\Debug\OperatorOverloadingAssignment.pdb
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\OperatorOverloadingAssignment\OperatorOverloadingAssignment\obj\Debug\OperatorOverloadingAssignment.csproj.AssemblyReference.cache
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\OperatorOverloadingAssignment\OperatorOverloadingAssignment\obj\Debug\OperatorOverloadingAssignment.csproj.CoreCompileInputs.cache
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\OperatorOverloadingAssignment\OperatorOverloadingAssignment\obj\Debug\OperatorOverloadingAssignment.exe
+C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\OperatorOverloadingAssignment\OperatorOverloadingAssignment\obj\Debug\OperatorOverloadingAssignment.pdb
