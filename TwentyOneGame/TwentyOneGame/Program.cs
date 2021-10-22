@@ -146,10 +146,33 @@ namespace TwentyOneGame
             // of this 'ConsoleColor' class doesn't have to wonder about if the user chose the right color or a color
             // that's supported because they can only choose one of the values present.
 
-            //  After making the 'Suit' property into an enum,
-            Card card = new Card();
-            card.Suit = Suit.Hearts;
+            //  After making the 'Suit' property into an enum, you can instantiate a new card, and select one of the 
+            // four options available (Hearts, Diamonds, Clubs, Spades). We can't give the 'Suit' property any other
+            // value than one of the four possible values. So making this property an enum limits the program but also
+            // protects it from errors. 
 
+            //  While this code is properly written, and the 'Suit' property should rightfully be an enum type, it's 
+            // important to note that in this specific example, changing the property to an enum mid-stream like this
+            // is definitely breaking other parts of the program.
+            
+            //// Card card = new Card();
+            //// card.Suit = Suit.Hearts;
+            // Enums have an underlying data type. On the surface, our enum is called 'Suit' and it has a string value.
+            
+            //// int underlyingValue = (int)Suit.Diamonds;
+            // What we did here was we casted 'Suit.Diamonds' to an integer.
+            
+            //// Console.WriteLine(underlyingValue);
+            
+            // When you run this, the integer "1" is printed to the console. Inside of an enum the underlying value is
+            // assigned in order and it starts with 0. 'Clubs' has a value of 0, 'Diamonds' has a value of 1, 'Hearts'
+            // has a value of 2, and 'Spades' has a value of 3.
+            // We could actually assign any value we want to these 
+            // properties. For example, we could type 'Clubs=4, Diamonds=10, Hearts=12, Spades=15'. Some of the reasons
+            // for setting the values this way, i.e. if you wanted to compare different values of enums.
+            // Another example would be like a computerized stove with 'Low, Medium, Hot': you would want to know that 
+            // 'Hot' is greater than 'Medium'. Having underlying value (or underlying data of 'int') allows you to 
+            // compare the values in a very specific and exact way.
 
             Deck deck = new Deck();           
 
