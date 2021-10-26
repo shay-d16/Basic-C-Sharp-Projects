@@ -16,6 +16,32 @@ namespace ParsingEnumsAssignment
         // "Please enter an actual day of the week.” to the console if an error occurs.
         static void Main(string[] args)
         {
+            DaysOfTheWeek day;
+            Console.WriteLine("What is the current day of the week?");
+                                   
+
+            try
+            {
+                string v = Console.ReadLine();
+                day = (DaysOfTheWeek)Enum.Parse(typeof(DaysOfTheWeek), v);
+                Console.WriteLine(day);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Please enter an actual day of the week.");
+            }
+
+            Console.ReadLine();
+        }
+        public enum DaysOfTheWeek
+        {
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Saturday,
+            Sunday
         }
     }
 }

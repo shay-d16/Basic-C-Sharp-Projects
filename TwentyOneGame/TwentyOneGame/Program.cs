@@ -146,7 +146,7 @@ namespace TwentyOneGame
             // of this 'ConsoleColor' class doesn't have to wonder about if the user chose the right color or a color
             // that's supported because they can only choose one of the values present.
 
-            //  After making the 'Suit' property into an enum, you can instantiate a new card, and select one of the 
+            // After making the 'Suit' property into an enum, you can instantiate a new card, and select one of the 
             // four options available (Hearts, Diamonds, Clubs, Spades). We can't give the 'Suit' property any other
             // value than one of the four possible values. So making this property an enum limits the program but also
             // protects it from errors. 
