@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace TwentyOneGame
 {
-    public class Card //This makes the Card class accessible to the Program class
+    public struct Card // 'public' makes the 'Card' class accessible to the Program class.
+        // STRUCTS: A 'Card' is a small value, and once you set the value of a 'Card', you wouldn't
+        // want to change anything in some weird way like with reference types. So a 'Card' is a
+        // perfectly valid candidate for being a struct. Also, the 'Card' class doesn't have other  
+        // class inheriting from it.
+      
     {
         //public Card()
         //This is a 'constructor' and it's value is assigned to an object upon creation.
@@ -16,7 +21,7 @@ namespace TwentyOneGame
 
         //}
         public Suit Suit { get; set; }
-        // Enums: You can change the data type of the Suit property from 'string' to 'Suit' to reflect
+        // ENUMS: You can change the data type of the 'Suit' property from 'string' to 'Suit' to reflect
         // that this property has changed into an enum.      
 
         //// public string Suit { get; set; }

@@ -154,16 +154,16 @@ namespace TwentyOneGame
             //  While this code is properly written, and the 'Suit' property should rightfully be an enum type, it's 
             // important to note that in this specific example, changing the property to an enum mid-stream like this
             // is definitely breaking other parts of the program.
-            
+
             //// Card card = new Card();
             //// card.Suit = Suit.Hearts;
             // Enums have an underlying data type. On the surface, our enum is called 'Suit' and it has a string value.
-            
+
             //// int underlyingValue = (int)Suit.Diamonds;
             // What we did here was we casted 'Suit.Diamonds' to an integer.
-            
+
             //// Console.WriteLine(underlyingValue);
-            
+
             // When you run this, the integer "1" is printed to the console. Inside of an enum the underlying value is
             // assigned in order and it starts with 0. 'Clubs' has a value of 0, 'Diamonds' has a value of 1, 'Hearts'
             // has a value of 2, and 'Spades' has a value of 3.
@@ -174,15 +174,67 @@ namespace TwentyOneGame
             // 'Hot' is greater than 'Medium'. Having underlying value (or underlying data of 'int') allows you to 
             // compare the values in a very specific and exact way.
 
-            Deck deck = new Deck();           
+            //--------------------------------------------- STRUCTS --------------------------------------------------
+            // Every data type in C# is either a reference type or a value type, and these two types have different
+            // behaviors. 
 
-            deck.Shuffle(3);
-                   
-            foreach(Card card in deck.Cards)
-            {
-                Console.WriteLine(card.Face + " of " + card.Suit);
-            }
-            Console.WriteLine(deck.Cards.Count);
+            int number = 5;
+            // Integers are a 'struct'
+
+            // Let's instantiate an object of the class 'Card':
+            Card card1 = new Card();
+            Card card2 = card1;
+            // Rather than creating a new 'Card' we instead made the value of 'card2' equal to the value of 'card1'
+            card1.Face = Face.Eight;
+            card2.Face = Face.King;
+
+            Console.WriteLine(card1.Face);
+            // When you run this, "King" will be printed to the console, even though we wrote 'card1.Face = Face.Eight'
+            // and that's because we set 
+            // Remember, a class is like a blueprint, and when we instantiate an object, all we're doing is allocating
+            // a block of memory and configuring it according to that "blueprint". but when we assigned the value of 
+            // 'card1' to 'card2' we didn't actually create new memory, because that could get wasteful and you would 
+            // have memory assigned all over the place. What we did instead was give 'card2' the address to the memory
+            // location of 'card1' and essentially it says "look to this address if the program asks for this value" or 
+            // "look here and change the values in this address if you want to change your own value."
+
+            // REFERENCE TYPE:  
+            // A good real-life analogy of this is would be, let's say you wrote an essay and instead of emailing it to
+            // your teacher (which would make a separate copy of it), you put it up on Google Drive or some other shared 
+            // service where any edits your teacher made to it would show up as well. That is exactly how all classes in 
+            // C# operate: by reference. They reference this central point (i.e. this Google Drive Document) where all
+            // edits are a part of the same document. This is the essence of what a reference type is in C#.
+
+            // When we say that classes in C# operate by references, we mean not only classes you create yourself, such 
+            // as the 'Card' class, but also classes that come prebult by the Framework Class Library, like the 'List' 
+            // class.
+
+            // Any data type that stores value by reference, where it's just this central repository where that value
+            // and other objects that have the same "value" are just referencing that same reference. So any data type
+            // stores value by reference is called a 'reference type', and as a general rule of thumb that includes all
+            // classes. Note: Since strings are immuteable (can't be changed without creating an entirely new string),
+            // if we tried to run the above code with a string data type, it wouldn't work.
+
+            // VALUE TYPES:
+            // Referring back to the email anology above, sending someone a copy of a paper or an essay would be sending
+            // something by value. You have created a separate, independant instance. You're not pointing to any external
+            // storage location.You are sending the actual value to the person. So if your teacher opened the essay on
+            // his computer as an attachment and made edits, it wouldn't show up on your end. That is in essence a value 
+            // type, as opposed to a shared Google Drive document which is a refence type.
+
+            // We've already mentioned that string is a reference type because it's a class, i.e. 'Card' is a reference 
+            // type, as well as 'List' being a reference type. Some built in value type are integers, boolens, enums, and
+            // datetime. 
+
+            //Deck deck = new Deck();           
+
+            //deck.Shuffle(3);
+
+            //foreach(Card card in deck.Cards)
+            //{
+            //    Console.WriteLine(card.Face + " of " + card.Suit);
+            //}
+            //Console.WriteLine(deck.Cards.Count);
             Console.ReadLine();            
         }
         //-------------------------------------------- ENUMS (Continued) ----------------------------------------------
