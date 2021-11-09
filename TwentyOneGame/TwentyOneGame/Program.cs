@@ -177,9 +177,10 @@ namespace TwentyOneGame
             //--------------------------------------------- STRUCTS --------------------------------------------------
             // Every data type in C# is either a reference type or a value type, and these two types have different
             // behaviors. 
+            
 
-            int number = 5;
-            // Integers are a 'struct'
+            //// int number = 5;
+            // Integers are a 'struct' 
 
             // Let's instantiate an object of the class 'Card':
             Card card1 = new Card();
@@ -226,8 +227,75 @@ namespace TwentyOneGame
             // type, as well as 'List' being a reference type. Some built in value type are integers, boolens, enums, and
             // datetime. 
 
-            //Deck deck = new Deck();           
+            // A 'struct' is practically the same as a class, except that it is a value type instead of a reference
+            // type. a 'struct' is a class with a value type. Another difference between the two is that a struct 
+            // can't be inherited. 
 
+            // If you tried to run the code 'int number = null;' you would get an error because value types are 
+            // non-nullable
+
+            // Now, we're going to change the 'Card' class into a struct. After that, when you run the above code, 
+            // 'Eight' is printed to the console. By changing 'Card' to a struct, 'card1' is now it's own separate
+            // instance, unrelated to 'card2'
+            
+
+            //------------------------------------------- LAMBDA ---------------------------------------------------
+            // Lambda functions in C# expose lists to a variety of handy methods that make coding much easier.
+            // Here, we have a fully populated deck object 'Deck deck = new Deck();' and this object has a 'List'
+            // property named 'Cards' which has a 'Card' data type: 'public List<Card> Cards { get; set; }.
+            // So inside of this 'deck' object, we have list od 'Cards'
+            // What if we wanted to find out how many "Aces" there are in the deck? You could find out the answer
+            // by using a 'foreach' loop:
+
+            Deck deck = new Deck();
+
+            //int counter = 0;
+            //foreach (Card card in deck.Cards)
+            //{
+            //    if (card.Face == Face.Ace)
+            //    {
+            //        counter++;
+            //    }
+            //}
+            //Console.WriteLine(counter);
+            // This should print "4" to the console. Although this code is technically correct, it could look 
+            // cleaner. You can use Lambda functions to make the code cleaner and more readable. It may seem
+            // confusing at first, but it can make coding so much easier and save you a lot of time in future 
+            // programs.
+
+            //// int count = deck.Cards.Count(x => x.Face == Face.Ace);
+            // So 'Cards' is a list, and 'Count()' is a Lambda function. In the parenthesis, the method counts
+            // 'x' which represents each element in the list that the method is counting where 'x.Face == Face.Ace'.
+
+            // You could take any collection (i.e. 'deck.Cards'), add a dot at the end, and there will be a list of 
+            // all the different Lambda methods you can apply to the list (i.e. FindIndex, GetRange, GroupBy, etc.),
+            // which are availble to us because of Lambda functions. Lambda functions are based off of Lambda 
+            // calculus, which is an advanced math that enables us to map these results incredibly fast.
+
+            //List<Card> newList = deck.Cards.Where(x => x.Face == Face.King).ToList();
+            // 'Where()' is a Lambda function that is very similar to a SQL 'WHERE' clause, in which you can filter
+            // your list for particular features. And we're going to take our list of 'Cards' and filter it by taking 
+            // each item and applying this function to each of them. You have to add the 'ToList()' method at the end 
+            // of the Lambda function because the Lambda function doesn't produce a list itself. SO this above code is 
+            // is essentially saying, "take this list of 'Cards' and find out where the 'Face' equals "King" and map 
+            // that to 'newList'." 
+
+            //foreach(Card card in newList)
+            //{
+            //    Console.WriteLine(card.Face);
+            //}
+            // This 'newList' should contain just "Kings"
+
+            //List<int> numberList = new List<int>() { 1, 2, 3, 535, 342, 23 };
+            //int sum = numberList.Sum();
+            //Console.WriteLine(sum);
+
+            // Word of caution when it comes to Lambda functions: they are very difficult to debug. If an error
+            // is thrown in your Lambda expression, you're kind of on your own in figuring out what peice of data
+            // caused it to break, and even more so once you start chaining Lambda expressions together or chaining
+            // one long Lambda expression
+
+            //Deck deck = new Deck();
             //deck.Shuffle(3);
 
             //foreach(Card card in deck.Cards)
