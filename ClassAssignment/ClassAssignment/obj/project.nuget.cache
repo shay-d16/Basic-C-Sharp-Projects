@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "I2BX1ZQEBVHXzjXtJ3UkSuJbOcbyPOZAAXQe5dUc2jOV4bwdcj9vNtKKhvFdq0t2Bg7n8WI0s4M25U3TtOQUYg==",
+  "dgSpecHash": "k2YVSJHKBa+hegnVX90TdOtBjW1GmXjHrrZX6Pj9OgYtrKNsFP7r+qT6lzMBuFoth6Ec7K42DLkqzT0aT+npkA==",
   "success": true,
   "projectFilePath": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Basic-C-Sharp-Projects\\ClassAssignment\\ClassAssignment\\ClassAssignment.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.20\\microsoft.netcore.app.host.win-x64.3.1.20.nupkg.sha512"
+  ],
   "logs": []
 }
