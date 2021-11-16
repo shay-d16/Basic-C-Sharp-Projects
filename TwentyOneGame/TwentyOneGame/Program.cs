@@ -247,7 +247,7 @@ namespace TwentyOneGame
             // What if we wanted to find out how many "Aces" there are in the deck? You could find out the answer
             // by using a 'foreach' loop:
 
-            Deck deck = new Deck();
+            // Deck deck = new Deck();
 
             //int counter = 0;
             //foreach (Card card in deck.Cards)
@@ -295,7 +295,7 @@ namespace TwentyOneGame
             // caused it to break, and even more so once you start chaining Lambda expressions together or chaining
             // one long Lambda expression
 
-            //Deck deck = new Deck();
+            Deck deck = new Deck();
             //deck.Shuffle(3);
 
             //foreach(Card card in deck.Cards)
