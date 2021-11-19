@@ -49,5 +49,67 @@ namespace TwentyOneGame
             // will add 10 to that. Because the player can decide whether their "Ace" is worth 1 or 11, we have to build
             // into our logic checks for "how much would this be if Ace was 1 or 11?"
         };
+        // The way that we're going to determine whether or not the 'Ace' equals 1 or 11 will be by taking a 'Hand',
+        // which is a list of 'Cards', and generating an array of integers of all possible values of that 'Hand'. For
+        // example, the user has an 'Ace' and a 'Three': that integer array would have two  entries in it and one of them
+        // would be "14" and the other would be "4". Using these numbers we could find the 'MaxValue()' or 'MinValue()', 
+        // and if the minimum value is over "21" then that player "busted". This method is going to check all possible 
+        // values and return an integer array:
+        private static int[] GetAllPossibleHandValues(List<Card> Hand)
+        // So, if the user has one 'Ace' card and another card, that 'Hand' has two possible values, one where the
+        // 'Ace' is equal to "1", and the other where it is equal to "11".
+        {
+            // Fist, we need to find out how many aces there are, because that will determine how many values there
+            // are in total:
+            int aceCount = Hand.Count(x => x.Face == Face.Ace);
+            // Here we used a Lambda expression (methods you can perform on lists). We're going to take each item 
+            // in 'Hand' ('x') we're going to check "is the card's 'Face' equal to 'Ace'?", we're going to count it,
+            // and return that count in the form of the variable 'aceCount'.
+
+            // Once we know how many there are, we can create out 'result' which will be an integer array. Any time  
+            // you create an array, you have to state how big it will be, how many possible 'results' there will be.
+            // In this case, the amount of 'results' is determined by how many 'Aces' there are plus 1.
+            int[] result = new int[aceCount + 1];
+
+            // Next, we'll get the lowest possible value there is, which in this case is the default value of
+            // 'Ace = 1', by using a lambda expression:
+            int value = Hand.Sum(x => _cardValues[x.Face]);
+            // Here, 'Sum()' takes each item 'x' and looks up it's value in the '_cardValues' dictionary and sums it.
+
+            // Now, we'll take the first entry in the integer array '[0]' and assign it to the variable 'value'.
+            result[0] = value;
+            // At this point, if there are no 'Aces' then we know there is only one possible value, b/c 'Ace' is the 
+            // 'Card' that has more than one value. So if there are no 'Aces' then there's only one possible value 
+            // that 'Hand' could have. There would be no point in performing any more logic if there's only one value.
+
+            if (result.Length == 1) return result;
+            // So, if there is only one 'result', then the 'result' is returned, and nothing else gets executed in this
+            // method.
+
+            //Now, we'll use a for loop to iterate through the 'Aces' and assigning different values to them.
+            for (int i = 1; i < result.Length; i++)
+            {
+                value += (i * 10); //shorthand for 'value = value + (i * 10)'
+                result[i] = value;
+                // 'value' is the lowest possible value, with all the 'Aces' equaling "1". So to create this integer
+                // array of possible values means that for each 'Ace' in the 'Hand' we make a separate value and add
+                // 10 to it '(i * 10) = 10'. If there's only one 'Ace' then the first 'value' would be "1", and the second
+                // value ('result') would be "1 + (1 * 10)". And if there are two 'Aces' in the 'Hand', then it would
+                // be "2 + (2 * 10) = 20".
+            }
+            return result;
+        }
+
+        public static bool CheckForBlackJack(List<Card> Hand)
+        // This method is going to return 'true' or 'false' when checking "does this 'Hand' contain an 'Ace' and a
+        // 'Face' card of 'Ten', 'Jack', 'King', or 'Queen'?" And then we are going to pass that in to a list of 'Cards'
+        // called 'Hand'. 
+        {
+            int[] possibleValues = GetAllPossibleHandValues(Hand);
+            int value = possibleValues.Max();
+            if (value == 21) return true;
+            else return false;
+        }
+            
     }
 }

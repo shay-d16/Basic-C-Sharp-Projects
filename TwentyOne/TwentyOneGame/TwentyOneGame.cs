@@ -86,7 +86,42 @@ namespace TwentyOneGame
                     // need to check for "BlackJack":
                     if (i == 1) // This means that this is the second turn.
                     {
+                        bool blackJack = TwentyOneRules.CheckForBlackJack(player.Hand);
+                        // B/c 'CheckForBlackJack()' is a static method, dont forget to preface it with it's class
+                        // name 'TwentyOneRules'
+                        // Here, we are passing in the player's 'Hand' to check it for "BlackJack". 
+
+                        // Now, we'll use some logic b/c if it is "BlackJack" then the player wins.
+                        if (blackJack)
+                        {
+                            Console.WriteLine("BlackJack! {0} wins {1}", player.Name, Bets[player]);
+
+                            // Now we will add the amount to the 'Balance'
+                            player.Balance += Convert.ToInt32((Bets[player] * 1.5) + Bets[player]);
+                            // In BlackJack you win 1.5 times your bet, so we'll take the players bet, multiply it by
+                            // 1.5, and then add that total to the original bet.
+                            return; //Once a player gets "BlackJack" we will end the round all together.
+                        }
+                    }
+                }
+                Console.Write("Dealer: ");
+                Dealer.Deal(Dealer.Hand);
+                if (i == 1)
+                {
+                    bool blackJack = TwentyOneRules.CheckForBlackJack(Dealer.Hand);
+                    if (blackJack)
+                    {
+                        Console.WriteLine("Dealer has BlackJack! Everyone loses!");
                         
+                        // Now, we have to give the dealer all the bets placed.
+                        // Remember, a dictionary is essentially a list of key-value pairs, meaning you can iterate 
+                        // through them.
+                        foreach (KeyValuePair<Player, int> entry in Bets)
+                        {
+                            Dealer.Balance += entry.Value;
+                            // So, we iterated through the dictionary and we assigned the 'Dealer' the balance of everything
+                            //
+                        }
                     }
                 }
             }
