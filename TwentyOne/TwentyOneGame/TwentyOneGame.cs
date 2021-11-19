@@ -125,6 +125,47 @@ namespace TwentyOneGame
                     }
                 }
             }
+            foreach (Player player in Players)
+            {
+                while (!player.Stay)
+                {
+                    Console.WriteLine("Your cards are: ");
+                    foreach (Card card in Player.Hand)
+                    {
+                        Console.Write("{0} ", card.ToString());
+                        // Here, we have a 'ToString()' method that makes it so the player can see their cards in 'Hand'
+                    }
+                    Console.WriteLine("\n\nHit or stay?");
+                    string answer = Console.ReadLine().ToLower();
+                    if (answer == "stay")
+                    {
+                        player.Stay = true;
+                        break;
+                        // Here, we 'break' the loop if the player chooses "stay" and check the while loop condition
+                        // '!player.Stay'.
+                    }
+                    else if (answer == "hit")
+                    {
+                        Dealer.Deal(player.Hand);
+                    }
+                    bool busted = TwentyOneRules.IsBusted(player.Hand);
+                    if (busted)
+                    {
+                        Dealer.Balance += Bets[player];
+                        Console.WriteLine("{0} Busted! You lose your bet of {1}. Your balance is now {2}.", player.Name, Bets[player], player.Balance);
+                        Console.WriteLine("Do you want to play again?");
+                        answer = Console.ReadLine().ToLower();
+                        if (answer == "yes" || answer == "yeah")
+                        {
+                            player.isActivelyPlaying = true;
+                        }
+                        else
+                        {
+                            player.isActivelyPlaying = false;
+                        }
+                    }
+                }
+            }
         }
         public override void ListPlayers()
         {

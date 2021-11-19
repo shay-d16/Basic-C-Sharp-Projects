@@ -110,6 +110,17 @@ namespace TwentyOneGame
             if (value == 21) return true;
             else return false;
         }
-            
+
+        // Now, we need a method for checking if the player "busted", or over 21:
+        public static bool IsBusted(List<Card> Hand)
+        {
+            int value = GetAllPossibleHandValues(Hand).Min();
+            if (value > 21) return true;
+            else return false;
+        }
+        
+        // Next, we will create another custom method for 'Stay' b/c Dealers generally have strict rules on what they
+        // can "hit" or "stay" on, usually dictated by the casino.
+        public static bool ShouldDealerStay()
     }
 }
