@@ -36,6 +36,7 @@ namespace TwentyOneGame
             Dealer.Hand = new List<Card>();
             Dealer.Stay = false;
             Dealer.Deck = new Deck();
+            Dealer.Deck.Shuffle();
             Console.WriteLine("PLace your bet!");
 
             foreach(Player player in Players)
@@ -122,6 +123,7 @@ namespace TwentyOneGame
                             // So, we iterated through the dictionary and we assigned the 'Dealer' the balance of everything
                             //
                         }
+                        return;
                     }
                 }
             }
@@ -130,7 +132,7 @@ namespace TwentyOneGame
                 while (!player.Stay)
                 {
                     Console.WriteLine("Your cards are: ");
-                    foreach (Card card in Player.Hand)
+                    foreach (Card card in player.Hand)
                     {
                         Console.Write("{0} ", card.ToString());
                         // Here, we have a 'ToString()' method that makes it so the player can see their cards in 'Hand'
@@ -158,14 +160,100 @@ namespace TwentyOneGame
                         if (answer == "yes" || answer == "yeah")
                         {
                             player.isActivelyPlaying = true;
+                            return;
                         }
                         else
                         {
                             player.isActivelyPlaying = false;
+                            return;
                         }
                     }
                 }
             }
+            // The advantage of the Dealer is that they can wait to see when other players "bust". If the player busts
+            // before the Dealer, that player still loses. The Dealer doesn't get their cards until all the players 
+            // have their cards.
+            Dealer.isBusted = TwentyOneRules.IsBusted(Dealer.Hand);
+            Dealer.Stay = TwentyOneRules.ShouldDealerStay(Dealer.Hand);
+            
+            // Just like the above while loop, where as long as the Dealer says "I don't want to 'Stay'" and isn't 
+            // busted, then let's continue to give them cards.
+            while (!Dealer.Stay && !Dealer.isBusted)
+            {
+                Console.WriteLine("Dealer is hitting...");
+                Dealer.Deal(Dealer.Hand);
+                Dealer.isBusted = TwentyOneRules.IsBusted(Dealer.Hand);
+                Dealer.Stay = TwentyOneRules.ShouldDealerStay(Dealer.Hand);
+            }
+            if (Dealer.Stay)
+            {
+                Console.WriteLine("Dealer is staying.");
+            }
+            if (Dealer.isBusted)
+            {
+                Console.WriteLine("Dealer busted!");
+                foreach (KeyValuePair<Player, int> entry in Bets) // Remember 'Bets' is a dictionary table.
+                {
+                    Console.WriteLine("{0} won {1}!", entry.Key.Name, entry.Value);
+                    // The player is going to be in the 'entry' which is a key-value pair, and the way you access
+                    // values in a key-value pair is to go 'entry.Key.Name' and 'Key' is the 'player'. Then 'entry.Value'
+                    // is the value in the 'Bets' dictionary.
+
+                    // We have to give that player their balance and their winnings, so we'll use a lambda expression to do it:
+                    Players.Where(x => x.Name == entry.Key.Name).First().Balance += (entry.Value * 2);
+                    // So we're looping through each key-value pair, finding the 'player' in the 'Players' list that matches
+                    // that key-value pair where the 'Name' equals the name in 'entry.Key.Name'.Next, we take that 'player',
+                    // who is very likely the only entry on this list, by calling the 'First()' method, and we take their
+                    // 'Balance' and what they bet multiplied by 2 to the 'Balance'.
+
+                    // Then we have to take the 'Dealer' and subtract the bet from them:
+                    Dealer.Balance -= entry.Value;
+                }
+                return; // ends the round.
+            }
+            // If the 'Dealer' and 'player' both 'Stay' but no one "busts" then we need a way to compare the value of both
+            // the Dealer's 'Hand' and the player's 'Hand'. At that point, whoever has the highest amount wins, and if they
+            // tie then they "push". 
+            foreach (Player player in Players)
+            {
+                // There are three options for the outcome of the round: The 'player' has a greater 'Hand', the 'Dealer'
+                // has a greater 'Hand', or they both tie. Usually we can use a boolean when there are just two options, 
+                // but boolean actually have a third option which is 'null', that can be used when you are dealing with three
+                // possible outcomes. Booleans are structs, they are a value type which means they cannot have a 'null' value.
+                // However, you can make it so that a boolean is able to take a 'null' value:
+                bool? playeraWon = TwentyOneRules.CompareHands(player.Hand, Dealer.Hand);
+                // The question mark takes this boolean data type into a nullable boolean. In a situation like this where you
+                // want to be able to assign a null' value, the .Net Framework makes it easier to work around these data type
+                // restrictions.
+
+                if (playeraWon == null)
+                {
+                    Console.WriteLine("Push! No one wins.");
+                    player.Balance += Bets[player];
+                }
+                else if (playeraWon == true)
+                {
+                    Console.WriteLine("{0} won {1}!", player.Name, Bets[player]);
+                    player.Balance += (Bets[player] * 2);
+                    Dealer.Balance -= Bets[player];
+                }
+                else
+                {
+                    Console.WriteLine("Dealer wins {0}!", Bets[player]);
+                    Dealer.Balance += Bets[player];
+                }
+                Console.WriteLine("Play again?");
+                string answer = Console.ReadLine().ToLower();
+                if (answer == "yes" || answer == "yeah")
+                {
+                    player.isActivelyPlaying = true;
+                }
+                else
+                {
+                    player.isActivelyPlaying = false;
+                }
+            }
+            
         }
         public override void ListPlayers()
         {

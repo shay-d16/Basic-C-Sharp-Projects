@@ -121,6 +121,42 @@ namespace TwentyOneGame
         
         // Next, we will create another custom method for 'Stay' b/c Dealers generally have strict rules on what they
         // can "hit" or "stay" on, usually dictated by the casino.
-        public static bool ShouldDealerStay()
+        public static bool ShouldDealerStay(List<Card> Hand)
+        {
+            // First, we'll get the possible 'Hand' values:
+            int[] possibleHandValues = GetAllPossibleHandValues(Hand);
+            // If the value is above 16 and below 22 the Dealer has to 'Stay', so we'll go through the possible 'Hand'
+            // values and see if one of them is between 16 and 22.
+            foreach (int value in possibleHandValues)
+            {
+                if (value > 16 && value < 22)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        // This method is going to return a nullable boolean:
+        public static bool? CompareHands(List<Card> PlayerHand, List<Card> DealerHand)
+        // Remember, 'bool?' is the new data type that allows for a nullable boolean value.
+        {
+            // First we create an integer array of all possible player results
+            int[] playerResults = GetAllPossibleHandValues(PlayerHand);
+            int[] dealerResults = GetAllPossibleHandValues(DealerHand);
+
+            // We have two arrays, but we can't take the maximum value b/c it may be over "21", so we have to find the
+            // highest value in each of these arrays that is less than 21, and then compare the two values. There are
+            // two 'Hands' and each 'Hand' has several possible values depending on how many 'Aces' are present, so we 
+            // need to find that possible value that is less than 22 but the highest between the two values:
+            int playerScore = playerResults.Where(x => x < 22).Max();
+            // So, we'll take the items ('x') in 'playerResults' where the item is less than 22 ('x < 22') and grab
+            // the largest of those items ('.Max()')
+            int dealerScore = dealerResults.Where(x => x < 22).Max();
+
+            // Now, we can compare:
+            if (playerScore > dealerScore) return true;
+            else if (playerScore < dealerScore) return false;
+            else return null; 
+        }
     }
 }
