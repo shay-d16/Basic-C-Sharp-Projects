@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace TwentyOneGame
 {
@@ -10,6 +11,25 @@ namespace TwentyOneGame
     {
         static void Main(string[] args)
         {
+            //---------------------------------------- FILE IO ---------------------------------------------------
+            // In this section, we will discuss how to write and read text to and from a text file. One of the most
+            // common uses of writing or reading anything from a text file would be "logging", which is when you
+            // put in a meaningful entry into a file or database based on an action of the program. Some programs 
+            // will log every method call if they really want to track everything, others will log just the errors.
+            // Right now, we're going to add logging on every card dealt to a text file.
+            // The 'File' class exists in the 'System.IO' namespace.
+
+            //string text = "Here is some text";
+            //File.WriteAllText(@"C:\Users\USER\OneDrive\Desktop\Logs\log.txt", text);
+            // 'File.WriteAllText()' takes in an argument of the path of the file and the 'text' you want written in
+            // it. The '@' symbol just means to read this string exactly as it is, otherwise you would have to add
+            // double backslashes, one of which is an escape character.
+
+            //string text = File.ReadAllText(@"C:\Users\USER\OneDrive\Desktop\Logs\log.txt");
+            // Now when you run the program an hover over 'text' you'll see the "Here is some text." from the text file.
+
+            //----------------------------------------------------------------------------------------------------
+
             // The first thing that we want to happen in this program is to print a welcome message to the user.
             Console.WriteLine("Welcome to the Grand Hotel and Casino. Let's start by telling me your name.");
             string playerName = Console.ReadLine(); 
