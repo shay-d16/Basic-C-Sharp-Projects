@@ -32,6 +32,7 @@ namespace TwentyOneGame
             // will take the path "C:\Users\USER\OneDrive\Desktop\Logs\log.txt", and takes another argument 'true'
             // as in it's 'true' that we want to 'append'.
             {
+                file.WriteLine(DateTime.Now);
                 file.WriteLine(card);
             } // Once the program hits this closing bracket, then everything in the above code is all cleaned up by
               // the memory manager. This is what the 'using' statement does.

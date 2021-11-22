@@ -28,7 +28,15 @@ namespace TwentyOneGame
             //string text = File.ReadAllText(@"C:\Users\USER\OneDrive\Desktop\Logs\log.txt");
             // Now when you run the program an hover over 'text' you'll see the "Here is some text." from the text file.
 
-            //----------------------------------------------------------------------------------------------------
+            //----------------------------------------- DATETIME -------------------------------------------------
+            // A 'DateTime' is a value type, as well as a struct, meaning it's not nullable. 
+            //DateTime dateTime = new DateTime(1995, 5, 23, 8, 32, 45);
+            //DateTime yearOfBirth = new DateTime(1995, 5, 23, 8, 32, 45);
+            //DateTime yearOfGraduation = new DateTime(2013, 6, 1, 16, 34, 22);
+
+            //TimeSpan ageAtGraduation = yearOfGraduation - yearOfBirth;
+            // When you run the code to this point and hover over 'ageAtGraduation', you'll find '{6584.08:01:37}' in 
+            // {days.hours.milliseconds.minutes}. 'TimeSpan' is just an easy way to compare two dates.
 
             // The first thing that we want to happen in this program is to print a welcome message to the user.
             Console.WriteLine("Welcome to the Grand Hotel and Casino. Let's start by telling me your name.");
