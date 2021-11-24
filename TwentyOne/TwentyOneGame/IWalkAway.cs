@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using TwentyOne.Interfaces;
 
-namespace TwentyOneGame
+//namespace TwentyOne.Interfaces
+namespace TwentyOne
 {
     //Let's say that this 'TwentyOneGame' is subject to the Nevada State Gaming Comission, which has some obscure law that
     //States that every game involving gambling must have a way for the individual to "stand up and walk away"; there must 

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//using TwentyOne.Interfaces;
 
-namespace TwentyOneGame
+namespace TwentyOne
 {
     public class TwentyOneGame : Game , IWalkAway
     {

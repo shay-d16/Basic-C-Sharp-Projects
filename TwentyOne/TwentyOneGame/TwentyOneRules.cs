@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TwentyOneGame
+namespace TwentyOne
 {
     // When checking for "BlackJack" we don't really want to build it into the 'Play()' method b/c that could make
     // the method even more bloated then it will already be, but in 21 there are a lot of very specific rules

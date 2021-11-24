@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+//using System.IO;
+//using TwentyOne.BaseClasses
 
-namespace TwentyOneGame
+namespace TwentyOne
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //---------------------------------------- FILE IO ---------------------------------------------------
+            //-------------------------------------------- FILE IO ----------------------------------------------------
             // In this section, we will discuss how to write and read text to and from a text file. One of the most
             // common uses of writing or reading anything from a text file would be "logging", which is when you
             // put in a meaningful entry into a file or database based on an action of the program. Some programs 
@@ -28,7 +25,7 @@ namespace TwentyOneGame
             //string text = File.ReadAllText(@"C:\Users\USER\OneDrive\Desktop\Logs\log.txt");
             // Now when you run the program an hover over 'text' you'll see the "Here is some text." from the text file.
 
-            //----------------------------------------- DATETIME -------------------------------------------------
+            //-------------------------------------------- DATETIME ---------------------------------------------------
             // A 'DateTime' is a value type, as well as a struct, meaning it's not nullable. 
             //DateTime dateTime = new DateTime(1995, 5, 23, 8, 32, 45);
             //DateTime yearOfBirth = new DateTime(1995, 5, 23, 8, 32, 45);
@@ -37,6 +34,42 @@ namespace TwentyOneGame
             //TimeSpan ageAtGraduation = yearOfGraduation - yearOfBirth;
             // When you run the code to this point and hover over 'ageAtGraduation', you'll find '{6584.08:01:37}' in 
             // {days.hours.milliseconds.minutes}. 'TimeSpan' is just an easy way to compare two dates.
+
+            //------------------------------------ ASSEMBLIES AND NAMESPACES -------------------------------------------
+            // ASSEMBLY: In the .Net Framework, anything that you write in code is essentially compiled twice. All the 
+            // code written below will be compiled by the C# compiler into Intermediate Language. That file is typically
+            // going to be .exe or .dll; if it's a library file, it will be .dll; if it's meant to just be executed, it
+            // will be a .exe. That .exe or .dll is in essence an assembly, and then it is compiled again but this time 
+            // into whatever specific machine code is being used by that computer. An assembly is essentially what you 
+            // get after you compile your C# code into intermediate language. So the 'TwentyOne' project is going to
+            // compile into a .exe
+
+            // NAMESPACE: A namespace is a way of organizing your code. Let's say you're working for a big online retailer
+            // like Amazon or Walmart for example, you could only have one class named "Product" or "Sell" or "Chair", 
+            // but with namespaces you're able to divide your code so that you can have multiple "Chair" classes and you 
+            // would be able to differentiate each of them based on it's namespace.
+
+            // Look to the 'Game' class for second example.
+
+            // 'USING' STATEMENT: The 'Console' part of 'Console.WriteLine();' belongs to the 'System' namespace. If we  
+            // were to delete 'using System;', red squigglies would appear under all code using the 'Console' class in 
+            // the program. However, you don't neccesarily need to have 'using Systems;' written above. You could type out 
+            // the full path like 'System.Console.WriteLine()'.
+
+            // 'USING' AND SUB-NAMESPACES: When get to build large applications, you'll definitely want to use namespaces 
+            // and subnamespaces. For example, our 'IWalkAway' interface could potentially be under a namespace called 
+            // 'TwentyOne.Interfaces' and we would have a whole section of interfaces. Then any class that uses this 
+            // namespace would need a 'using TwentyOne.Interfaces' above their namespace so the program recognizes it.
+            // If you wanted to create another interface called 'IWalkAway' it would have to be in a difference namespace.
+            // That way you are able to reuse these, and things don't get confused. Sometimes, you have two classes which
+            // have the same name, but they exist in different namespaces, yet you're using the name space at the top
+            // (i.e. 'using TwentyOne.Interfaces'). Remember, the 'using' statement makes it so that you don't have to 
+            // type out the full path, i.e. 'System.Console.WriteLine()', every time you called that class from that
+            // specific namespace.
+
+            // Look to 'TwentyOneGame' class for example three.
+
+
 
             // The first thing that we want to happen in this program is to print a welcome message to the user.
             Console.WriteLine("Welcome to the Grand Hotel and Casino. Let's start by telling me your name.");
