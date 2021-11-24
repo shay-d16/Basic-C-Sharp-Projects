@@ -1,6 +1,8 @@
 ﻿using System;
 //using System.IO;
 //using TwentyOne.BaseClasses
+using Casino;
+using Casino.TwentyOne;
 
 namespace TwentyOne
 {
@@ -67,8 +69,58 @@ namespace TwentyOne
             // type out the full path, i.e. 'System.Console.WriteLine()', every time you called that class from that
             // specific namespace.
 
-            // Look to 'TwentyOneGame' class for example three.
+            // ------------------------------------------- CLASS LIBRARIES ---------------------------------------------
+            // Now, we'll focus on creating class libraries as well as how we can add references to assemblies. In the 
+            // Solution Explorer window, you'll notice a "References" tab in the 'TwentyOne' project, and we're going to
+            // talk about how we can add code there so that this 'TwentyOne' project can reference third-party libraries.
+            // In terms of this program we've built of a game of 21, where we have some generic classes and inheritance
+            // happening, it is practically a library in itself. Theoretically, we could take all of ou code, except for 
+            // 'Program' class, and we could bundle it up and make it an open-source, third-party library that someone 
+            // could use methods from to conduct a game of 21. Their implementation in the 'Main()' method would be 
+            // different, but everything else would be the same. 
 
+            // So, we're going to take all of this code and turn it into a library. Right click on your 'Solution', choose
+            // "Add", click "New Project", and then you will choose "Class Library (.Net Framework)". We're going to call
+            // this library 'Casino'. In the 'Casino' library is a 'Class1' class, which looks almost exactly like a console 
+            // application. The only difference is that its 'Class1' does not have a 'Program' class and 'Main()' method. 
+            // It's just a collection of classes. We can delete this 'Class1' class since we won't need it for this example.
+            // Next, we will move each class from the 'TwentyOne' project to the 'Casino' library, except for the 'Program'  
+            // class. Then delete each of the moved classes from the 'TwentyOne' project.
+
+            // Now that each file has been successfully moved, we have to go into the 'Card', 'Dealer', 'Deck', 'Game', and 
+            // 'Player' classes and change the namespace from 'TwentyOne' to 'Casino'. Change the 'IWalkAway' namespace to
+            // 'Casino.Interfaces'.
+
+            // Anything that deals with 'TwentyOne'('TwentyOneDealer', 'TwentyOneGame', and 'TwentyOneRules') will be put  
+            // into the 'TwentyOne' subsection of 'Casino', with the namespace written like 'Casino.TwentyOne'.
+
+            // If we're going to access the class files in the 'Casino' library, we'll have to use references. First, we
+            // have to build the actual .dll library file: Right-click on 'Casino' in the solution explorer and select
+            // "Build". When the Build has succeeded, right-click on the "References" tab in the 'TwentyOne' project and
+            // choose "Add Reference", then choose "Browse" and find the repository folder containing the 'TwentyOne' 
+            // project, select the "Casino" folder > "bin" > "Debug" and there should be a "Casino.dll" file which
+            // you will select and hit "Add" and finally "Okay". Now you should find the file in the project's
+            // "References" tab.            
+            // You can now add 'using' statements above 'using.Casino' and 'using .TwentyOne' to the top.
+            
+            // After testing to see that this console application still works properly, we can now say that we created
+            // a library file, and this is a file that not only we can reference in our application, but others could 
+            // too. You could upload it onto a GitHub or Microsoft Third Party packages library, and someone could 
+            // download it into that program and use it.
+
+            // ACCESSABILITY MODIFIERS: Accesibility modifiers control which part of your code is exposed.
+            // 'public' and 'private' are both accessability modifiers. 'Public' means it's 
+            //  accessible anywhere. For example: the 'Dealer' class is 'public', so once the 'TwentyOne' application
+            // has imported the 'Casino' library, it will have access to the 'Dealer' class. However, if the class was
+            // 'private' 'TwentyOne' wouldn't have access to this class, b/c anything with a 'private' modifier is only
+            // accessible within it's class.
+            // There are more modifiers like 'protected', meaning it's limited to the class it's created in, as well as
+            // any classes that derive from it. 'Internal', meaning these methods can only be accessed to methods of the
+            // same assembly. If you were to make the 'Dealer' class 'internal', then only the classes in the 'Casino' 
+            // assembly can access it, and that would be a problem if you ever tried to access it directly from 
+            // the 'TwentyOne' application.
+            // It's good practice to declare the accessibility of a class, b/c it's a way of controlling your code.
+            //
 
 
             // The first thing that we want to happen in this program is to print a welcome message to the user.

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TwentyOne
+//namespace TwentyOne
+namespace Casino.TwentyOne
 {
     public class TwentyOneDealer : Dealer // Now 'TwentyOneDealer' can inherit from 'Dealer'
     {

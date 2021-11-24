@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 
 
-namespace TwentyOne
+//namespace TwentyOne
 //namespace TwentyOne.BaseClasses;
-    //--------------------------------------- ASSEMBLIES AND NAMESPACES ----------------------------------------------
-    // If we were to change this namespace from 'TwentyOne' to 'TwentyOne.BaseClasses, b/c you wanted to organize your
-    // base classes, when you go back to the program file and scroll down to the 'Game' class, you'll notice that 
-    // There is a red squiggly underneath it because the program no longer recognizes it. When you hover over it, it
-    // says "The type or namespace name 'Game' could not be found (are you using directive or an assembly reference?)"
-    // Only by adding 'using TwentyOne.BaseClasses' to the program file (above the namespace) will the 'Game' class be 
-    // recognized by the program again.
-    //----------------------------------------------------------------------------------------------------------------
+namespace Casino
+//--------------------------------------- ASSEMBLIES AND NAMESPACES ----------------------------------------------
+// If we were to change this namespace from 'TwentyOne' to 'TwentyOne.BaseClasses, b/c you wanted to organize your
+// base classes, when you go back to the program file and scroll down to the 'Game' class, you'll notice that 
+// There is a red squiggly underneath it because the program no longer recognizes it. When you hover over it, it
+// says "The type or namespace name 'Game' could not be found (are you using directive or an assembly reference?)"
+// Only by adding 'using TwentyOne.BaseClasses' to the program file (above the namespace) will the 'Game' class be 
+// recognized by the program again.
+//----------------------------------------------------------------------------------------------------------------
 {
     public abstract class Game
     {

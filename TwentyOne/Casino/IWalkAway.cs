@@ -1,8 +1,10 @@
 ﻿using System;
 //using TwentyOne.Interfaces;
 
+//namespace TwentyOne
 //namespace TwentyOne.Interfaces
-namespace TwentyOne
+
+namespace Casino
 {
     //Let's say that this 'TwentyOneGame' is subject to the Nevada State Gaming Comission, which has some obscure law that
     //States that every game involving gambling must have a way for the individual to "stand up and walk away"; there must 

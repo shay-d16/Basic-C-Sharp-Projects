@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 //using TwentyOne.Interfaces;
 
-namespace TwentyOne
+//namespace TwentyOne
+namespace Casino.TwentyOne
 {
     public class TwentyOneGame : Game , IWalkAway
     {
@@ -38,7 +39,7 @@ namespace TwentyOne
             Dealer.Stay = false;
             Dealer.Deck = new Deck();
             Dealer.Deck.Shuffle();
-            Console.WriteLine("PLace your bet!");
+            Console.WriteLine("Place your bet!");
 
             foreach(Player player in Players)
             {
