@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 //using System.IO;
 //using TwentyOne.BaseClasses
 using Casino;
@@ -102,7 +103,7 @@ namespace TwentyOne
             // you will select and hit "Add" and finally "Okay". Now you should find the file in the project's
             // "References" tab.            
             // You can now add 'using' statements above 'using.Casino' and 'using .TwentyOne' to the top.
-            
+
             // After testing to see that this console application still works properly, we can now say that we created
             // a library file, and this is a file that not only we can reference in our application, but others could 
             // too. You could upload it onto a GitHub or Microsoft Third Party packages library, and someone could 
@@ -120,11 +121,55 @@ namespace TwentyOne
             // assembly can access it, and that would be a problem if you ever tried to access it directly from 
             // the 'TwentyOne' application.
             // It's good practice to declare the accessibility of a class, b/c it's a way of controlling your code.
+
+            //---------------------------------------- ADDITIONAL C# FEATURES ------------------------------------------
+            // CONSTRUCTOR CALL CHAIN: The idea behind a constructor call chain is that you can define multiple 
+            // constructors and you can basically utilize an earlier constructor. It helps in preventing writing things
+            // more than once. 
+
+            // Look to the 'Player' class for an example.
+
+            //Player newPlayer = new Player("Shay");
+            // Now, when you run the code to this point, and hover over 'newPlayer' you will see a 'player' named "Shay"
+            // with a balance of 100. This is how you chain constructors. It is much more useful when you are dealing with 
+            // a lot of constructors or very long ones.
+
+            // IMPLICITLY DEFINED VARIABLES: Remember, C# is a typed language, meaning the data type of an object MUST be 
+            // declared before you declare the variable. However, C# now offers an exception to this. You can implicitly
+            // define a variable by using the keyword 'var':
+            //var newPlayer = new Player("Shay");
+            // This will be the most useful you don't want to have to type out something like:
+            //'Dictionary<string, string> newDictionary = new Dictionary<string>'
+            // You could shorten it to 'var newDictionary = new Dictionary<string, string>();
+            // The general rule of thub when it comes to the 'var' keyword is: if ever the data type is in question 
+            // then you would want to declare the data type for readability purposes. You can tell that the above code
+            // has a Dictionary data type, but sometimes data types can be obscured in a lambda espression or there's
+            // a method that you aren't familiar with. Using 'var' too often can make things confusing. You would only
+            // use it sometimes if you wanted to type things up quickly or didn't want to type out a long data type.
+
+            // CONSTANTS: You can declare constants in C#. Once a program has been compiled, any constants created 
+            // cannot be changed. This is another aspect of C# where you can assert control over your program.
+            const string casinoName = "Grand Hotel and Casino";
+            // In this example, this constant isn't going to make a huge difference in our code. However, if we 
+            // referenced it several times in this program, then it would be useful to have that 'const' keyword. You
+            // wouldn't have to worry that some user input, for example, or someone else using the code would change
+            // that name. While this program is running, that name will not change.
+
+            // GUID: There is a class in C# that enables you to make a global unique identifier and it's called a GUID.
+            // If you have a user in your program, you could access their GUID and then look that up in a table to find out
+            // their name, for instance.The advantage of a GUID is that b/c of the way it's built the odds of getting a 
+            // dupilcate GUID are slim to none; you could create as many GUIDs or users as you want in your database and 
+            // never worry that you're going to have a non-unique identifier for that user.
+            //Guid identifier = Guid.NewGuid();
+            // Let's create a GUID once the 'player' gives their name. To do this we will add a GUID property to the
+            // 'Player' class.
+            // One option for GUIDs is that you can pass in a string which would give a GUID structure by using the value 
+            // represented by the string. You can basically pass in values and the algorithm.
             //
 
 
             // The first thing that we want to happen in this program is to print a welcome message to the user.
-            Console.WriteLine("Welcome to the Grand Hotel and Casino. Let's start by telling me your name.");
+            Console.WriteLine("Welcome to the {0}. Let's start by telling me your name.", casinoName);
             string playerName = Console.ReadLine(); 
             // user inputs their name and it is stored in the variable 'playerName'.
                                                     
@@ -144,6 +189,13 @@ namespace TwentyOne
                 // user's name and how much money they brought.
                 Player player = new Player(playerName, bank);
                 // *Remember that the 'Player' object takes in two parameters.
+
+                player.Id = Guid.NewGuid();
+                //When the 'player' joins a game, let's log the player's GUID as soon as they start the game:
+                using (StreamWriter file = new StreamWriter(@"C:\Users\USER\OneDrive\Desktop\Logs\log.txt", true))
+                {
+                    file.WriteLine(player.Id);                    
+                }
 
                 Game game = new TwentyOneGame();
                 // polymorphism at work here. We do this to expoze the overloaded operators in the 'TwentyOneGame' 

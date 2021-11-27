@@ -26,8 +26,8 @@ namespace Casino
             Hand.Add(Deck.Cards.First());
             string card = string.Format(Deck.Cards.First().ToString() + "\n");
             Console.WriteLine(card);
-            // When logging, we are dealing with "streams" which is unmanaged code, and in that case you have to make sure that 
-            // everything gets disposed of afterwards otherwise we'll end up running out of memory: 
+            // When logging, we are dealing with "streams" which is unmanaged code, and in that case you have to make sure 
+            // that everything gets disposed of afterwards otherwise we'll end up running out of memory: 
             using (StreamWriter file = new StreamWriter(@"C:\Users\USER\OneDrive\Desktop\Logs\log.txt", true))
             // So we're going to be using 'StreamWriter', call it 'file', create a new 'StreamWriter' object which
             // will take the path "C:\Users\USER\OneDrive\Desktop\Logs\log.txt", and takes another argument 'true'
@@ -35,10 +35,11 @@ namespace Casino
             {
                 file.WriteLine(DateTime.Now);
                 file.WriteLine(card);
+
             } // Once the program hits this closing bracket, then everything in the above code is all cleaned up by
               // the memory manager. This is what the 'using' statement does.
                 Deck.Cards.RemoveAt(0);
-            //---------------------------------------------------------------------------------------------------------------
+            
         }
     }
 }
