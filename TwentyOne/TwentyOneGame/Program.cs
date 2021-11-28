@@ -121,10 +121,11 @@ namespace TwentyOne
             // assembly can access it, and that would be a problem if you ever tried to access it directly from 
             // the 'TwentyOne' application.
             // It's good practice to declare the accessibility of a class, b/c it's a way of controlling your code.
+            // Note: Every time you update a library file, you will have to "Rebuild" the library, or use CTRL+Shift+B.
 
             //---------------------------------------- ADDITIONAL C# FEATURES ------------------------------------------
             // CONSTRUCTOR CALL CHAIN: The idea behind a constructor call chain is that you can define multiple 
-            // constructors and you can basically utilize an earlier constructor. It helps in preventing writing things
+            // constructors and basically utilize an earlier constructor. It helps in preventing writing things
             // more than once. 
 
             // Look to the 'Player' class for an example.
@@ -165,17 +166,47 @@ namespace TwentyOne
             // 'Player' class.
             // One option for GUIDs is that you can pass in a string which would give a GUID structure by using the value 
             // represented by the string. You can basically pass in values and the algorithm.
-            //
+            
+            //------------------------------------------- EXCEPTION HANDLING --------------------------------------------
+            // An exception is an event which occurs during the excution of a program that disrupts the normal flow of the 
+            // programs instructions. Any time you've seen an "Exception Unhandled" window pop up has all been in the 
+            // "Debugging Mode". By default Visual Studio is in "Debugging Mode" any time you run an application from 
+            // inside of it. That is different than how an application would run outside of Visual Studio, as a stand-alone
+            // .exe file.
+            // If you were to choose the "Start Without Debugging" option, and the program ran into an error, the error 
+            // message would show up in the console itself and a window would pop up saying "TwentyOne has stopped working/
+            // Hang on while Windows reports the problem to Microsoft...". The user not only saw a raw, ugly error message,
+            // but program iteself crashed. Exception handling is the process of preventing this.
 
+            // Look below for first example.
+
+            // Another check we need to make is for when the user places their bet, b/c they could easily enter "-100",
+            // then if they busted, instead of losing 100, they user ends up gaining 100, which is a problem. Look to 
+            // 'TwentyOneGame' class under 'bet'.
+
+            // It's best practice to be as specific as possible when catching exceptions, that way they can be handled
+            // appropriately 
+            
 
             // The first thing that we want to happen in this program is to print a welcome message to the user.
             Console.WriteLine("Welcome to the {0}. Let's start by telling me your name.", casinoName);
-            string playerName = Console.ReadLine(); 
+            string playerName = Console.ReadLine();
             // user inputs their name and it is stored in the variable 'playerName'.
-                                                    
-            Console.WriteLine("And how much money did you bring today?");
-            int bank = Convert.ToInt32(Console.ReadLine()); 
-            // take the user input (integer), convert it to a string, and assign it to the variable 'bank'.
+
+            // EXCEPTION HANDLING: Any time you have to convert to an integer and you're relying on user input, checks like this
+            // are necessary :
+            bool validAnswer = false; //We'll set it at 'false' initially
+            int bank = 0;
+            while (!validAnswer) //This loop will get hit no matter what b/c we set it to 'false' from the beginning.
+            {
+                Console.WriteLine("And how much money did you bring today?");
+                validAnswer = int.TryParse(Console.ReadLine(), out bank);
+                // This 'TryParse()' method is similar to 'Convert.ToInt32()' in that it casts the object from string
+                // to int. The difference is that 'TryParse()' has a 'return' value which indicates whether or not the 
+                // conversion succeeded. If it does, it gets sent back to it's 'out' parameter, the 'bank' variable.
+                // If not, then 'bank' remains 0.
+                if (!validAnswer) Console.WriteLine("Please enter digits only, no decimals.");
+            }//We'll have to do this same thing in the 'TwentyOneGame' class when placing bets
 
             Console.WriteLine("Hello, {0}. Would you like to join a game of 21 right now?", playerName);
             // Here, we used string formatting where we put a variable placeholder in curly braces (think "wildcard"),
@@ -195,7 +226,7 @@ namespace TwentyOne
                 using (StreamWriter file = new StreamWriter(@"C:\Users\USER\OneDrive\Desktop\Logs\log.txt", true))
                 {
                     file.WriteLine(player.Id);                    
-                }
+                }//Now, when you run the program, it will log the player's GUID along with their hand and time stamp.
 
                 Game game = new TwentyOneGame();
                 // polymorphism at work here. We do this to expoze the overloaded operators in the 'TwentyOneGame' 
@@ -209,9 +240,25 @@ namespace TwentyOne
                     //This loop checks that the player wants to play AND they have enough money to play. 
                     //If both conditions are met, this loop will continue to run.
                 {
-                    game.Play();
-                    // 'game.Play()' is going to to play one 'Hand', and this while loop is going to loop through 
-                    // again and again as long as the player 'isActivelyPlaying' and their 'Balance' is greater than 0.                    
+                    try
+                    {
+                        game.Play();
+                        // 'game.Play()' is going to to play one 'Hand', and this while loop is going to loop through 
+                        // again and again as long as the player 'isActivelyPlaying' and their 'Balance' is greater than 0. 
+                    }
+                    catch (ArgumentException) //for an argument exception
+                    {
+                        Console.WriteLine("Something you entered was incorrect.");
+                        Console.ReadLine();
+                        return; //ends the program
+                    }
+                    catch (Exception) //for generic exceptions
+                    {
+                        Console.WriteLine("An error occured. Please contact your System Administrator.");
+                        Console.ReadLine();
+                        return; 
+                    }
+
                 }
                 // If the user exits the while loop, we'll want to subtract them from the game.
                 game -= player;
