@@ -17,7 +17,7 @@ namespace Casino
         {
             // This constructor assigns 'name' to 'Name', but if the player doesn't provide a 'beginningBalance' then this 
             // constructor will assign the value of '100' as the deafult 'beginningBalance'. This constructor doesn't need 
-            // anymoreimplementation than this, b/c this alone is enough to handle the information in the other 'Player'
+            // anymore implementation than this, b/c this alone is enough to handle the information in the other 'Player'
             // constructor ('Hand', 'Balance', 'Name'). We are able to reuse the code from the original 'Player' constructor
             // inside this constructor.
         }
