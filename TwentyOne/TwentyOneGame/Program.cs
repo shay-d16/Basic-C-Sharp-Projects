@@ -190,7 +190,18 @@ namespace TwentyOne
             // are built into the framework all inherit from this 'Exception' class. Look to 'FraudException' class.
 
             //--------------------------------------------- DATA ACCESS -------------------------------------------------
-            // Look to 'Data_Access_in_Visual_Stuido.txt' for notes about Database Access.
+            // Look to 'Data_Access_in_Visual_Stuido.txt' for more notes about Database Access.
+
+            // In the two 'catch' blocks below, we are going to put some code for logging those exceptions to the
+            // 'TwentyOneGame' database. Rather than create a new class, we'll instead create a private method below this
+            // 'Main()' method called 'UpdateDbWithException', pass in an 'Exception' object so we can do something 
+            // with that object.
+            // We are making this method 'private' since it will only be used in this class. And we'll make it 'static' 
+            // so we don't have to create a new instance of 'Program'. This will be a 'void' method, meaning it won't
+            // return anything. Normally, you would want to return something to the database, like 'true' or 'false', but  
+            // for simplicity we will keep this method 'void'.
+            // It is in this class that we will be dealing with ADO.NET, a part of the 'System' library which deals with 
+            // database connections.
 
             // The first thing that we want to happen in this program is to print a welcome message to the user.
             Console.WriteLine("Welcome to the {0}. Let's start by telling me your name.", casinoName);
@@ -273,8 +284,23 @@ namespace TwentyOne
             // This saves us from having to write an else statement when we don't need it which makes the code cleaner.
             // If the user answers "no" it will skip the 'if' statement and jump straight to end, here:
             Console.Read();
+            // This is the entirity of the 'Main()' method. Everything else that happens in this game is going to happen
+            // "below the surface", which is what we want because we don't want too much going on in the 'Main()' method.
         }
-        // This is the entirity of the 'Main()' method. Everything else that happens in this game is going to happen
-        // "below the surface", which is what we want because we don't want too much going on in the 'Main()' method.
+        
+        private static void UpdateDbWithException(Exception ex) //takes in an argument of type 'Exception' called 'ex'
+        {
+            // DATA ACCESS: The first thing we need in this method is a "connection string" which is a long string that 
+            // typically contains information about the database instance you're trying to connect to (i.e. a username
+            // and password location and how to access it). You always need a connection string to connect to a database.
+            string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=TwentyOneGame;
+                                        Integrated Security=True;Connect Timeout=30;Encrypt=False;
+                                        TrustServerCertificate=False;ApplicationIntent=ReadWrite;
+                                        MultiSubnetFailover=False";
+
+
+
+
+        }
     }
-}
+}   
