@@ -166,7 +166,7 @@ namespace TwentyOne
             // 'Player' class.
             // One option for GUIDs is that you can pass in a string which would give a GUID structure by using the value 
             // represented by the string. You can basically pass in values and the algorithm.
-            
+
             //------------------------------------------- EXCEPTION HANDLING --------------------------------------------
             // An exception is an event which occurs during the excution of a program that disrupts the normal flow of the 
             // programs instructions. Any time you've seen an "Exception Unhandled" window pop up has all been in the 
@@ -183,10 +183,14 @@ namespace TwentyOne
             // Another check we need to make is for when the user places their bet, b/c they could easily enter "-100",
             // then if they busted, instead of losing 100, they user ends up gaining 100, which is a problem. Look to 
             // 'TwentyOneGame' class under 'bet'.
-
             // It's best practice to be as specific as possible when catching exceptions, that way they can be handled
-            // appropriately 
-            
+            // appropriately. C# has a way to create your own exceptions, which is how we'll deal with the above issue in 
+            // the user attempts to cheat. Right-click 'Casino' and add a class called 'FraudException'. We will have this 
+            // class inherit from the built-in 'Exception' class. If you'll notice, the more specific exceptions that
+            // are built into the framework all inherit from this 'Exception' class. Look to 'FraudException' class.
+
+            //--------------------------------------------- DATA ACCESS -------------------------------------------------
+            // Look to 'Data_Access_in_Visual_Stuido.txt' for notes about Database Access.
 
             // The first thing that we want to happen in this program is to print a welcome message to the user.
             Console.WriteLine("Welcome to the {0}. Let's start by telling me your name.", casinoName);
@@ -246,13 +250,13 @@ namespace TwentyOne
                         // 'game.Play()' is going to to play one 'Hand', and this while loop is going to loop through 
                         // again and again as long as the player 'isActivelyPlaying' and their 'Balance' is greater than 0. 
                     }
-                    catch (ArgumentException) //for an argument exception
+                    catch (FraudException) //the more specific exceptions should be placed above the general exceptions.
                     {
-                        Console.WriteLine("Something you entered was incorrect.");
+                        Console.WriteLine("Security! Kick this person out.");
                         Console.ReadLine();
                         return; //ends the program
                     }
-                    catch (Exception) //for generic exceptions
+                    catch (Exception) //for generic exceptions.
                     {
                         Console.WriteLine("An error occured. Please contact your System Administrator.");
                         Console.ReadLine();

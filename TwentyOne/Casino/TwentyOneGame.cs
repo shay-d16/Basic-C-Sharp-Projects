@@ -53,7 +53,7 @@ namespace Casino.TwentyOne
                 }
                 if (bet < 0)
                 {
-                    throw new ArgumentException();
+                    throw new FraudException();
                 }
                 bool successfullyBet = player.Bet(bet);
                 // So we're passing in the amount the player entered ('bet') to the 'Bet()' method, and if the player
