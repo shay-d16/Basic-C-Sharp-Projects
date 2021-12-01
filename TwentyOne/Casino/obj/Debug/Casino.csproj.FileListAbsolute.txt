@@ -3,4 +3,3 @@ C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\TwentyOne\Casino\
 C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\TwentyOne\Casino\bin\Debug\Casino.pdb
 C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\TwentyOne\Casino\obj\Debug\Casino.dll
 C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\TwentyOne\Casino\obj\Debug\Casino.pdb
-C:\Users\USER\OneDrive\Documents\GitHub\Basic-C-Sharp-Projects\TwentyOne\Casino\obj\Debug\Casino.csproj.AssemblyReference.cache
