@@ -1,8 +1,8 @@
 ﻿@*this is the admin page and b/c we will be using a 'model', we'll need some 'using' statements.
   In this 'admin'backend, we'll be passing in a list as our model, b/c we will be taking all of the
   'SignUps' from the database and displaying it on this page for the admin to view. *@
-@using NewsletterAppMVC.Models
-@model List<NewsletterSignUp>
+@using NewsletterAppMVC.ViewModels
+@model List<SignupVm>
 
 <div class="row no-gutters m-3">
   <div class="card col-sm-12 col-md-10 col-lg-6 mx-auto shadow">

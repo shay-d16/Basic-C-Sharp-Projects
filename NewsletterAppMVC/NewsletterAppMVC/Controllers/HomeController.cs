@@ -1,4 +1,5 @@
 ﻿using NewsletterAppMVC.Models;
+using NewsletterAppMVC.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -76,7 +77,7 @@ namespace NewsletterAppMVC.Controllers
         {
             // Here, we'll create logic for pulling the information from the database and display it to the
             // admin, which we will do using ADO.NET
-            string queryString = @"SELECT Id, FirstName, LastName, EmailAddress from SignUps";
+            string queryString = @"SELECT Id, FirstName, LastName, EmailAddress, SocialSecurityNumber from SignUps";
 
             // Now we'll create a list of our model
             List<NewsletterSignUp> signups = new List<NewsletterSignUp>();
@@ -104,13 +105,39 @@ namespace NewsletterAppMVC.Controllers
                     signup.FirstName = reader["FirstName"].ToString();
                     signup.LastName = reader["LastName"].ToString();
                     signup.EmailAddress = reader["EmailAddress"].ToString();
-                    // We'll add this to the list we just created:
+                    
+                    // B/c we don't want to display something like a user's social to the 'View' we need a way to return
+                    // these objects without the 'SocialSecurityNumber' object specifically.
+                    // This can be done using a View Model, which is a model that is stripped down to ONLY what you need for
+                    // the 'View'. View Models live in a separate folder called 'ViewModels' so we'll need to create that. 
+                    signup.SocialSecurityNumber = reader["SocialSecurityNumber"].ToString();                                       
+                    
+                    // We'll add all of this to the list we just created:
                     signups.Add(signup);
                 }
             }
+            // A common practice on the controller is to map your database object to a view model. So let's create an empty
+            //  list with the 'SignupVm' data type: 
+            var signupVms = new List<SignupVm>();
+            // The data type is obvious here so it's best practice to use the 'var' keyword in this instance.
+
+            // Then we will loop through all the 'signups':
+            foreach (var signup in signups)
+            {
+                // Here, we will map properties between objects
+                var signupVm = new SignupVm();
+                signupVm.FirstName = signup.FirstName;
+                signupVm.LastName = signup.LastName;
+                signupVm.EmailAddress = signup.EmailAddress;
+                signupVms.Add(signupVm);
+            }
+
+
+
+
             // So we have populated a list of 'NewsletterSignUps' (which is our model or Business object), 
             // and the list is called 'signups'. Now, we will pass this list to the 'View'.
-            return View(signups);
+            return View(signupVms);
         }
     }
 }
