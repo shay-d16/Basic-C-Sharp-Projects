@@ -1,0 +1,34 @@
+﻿@*this is the admin page and b/c we will be using a 'model', we'll need some 'using' statements.
+  In this 'admin'backend, we'll be passing in a list as our model, b/c we will be taking all of the
+  'SignUps' from the database and displaying it on this page for the admin to view. *@
+@using NewsletterAppMVC.Models
+@model List<NewsletterSignUp>
+
+<div class="row no-gutters m-3">
+  <div class="card col-sm-12 col-md-10 col-lg-6 mx-auto shadow">
+    
+    <div class="card-header text-center">
+      <h5 class="m-0">Sign-ups</h5>      
+    </div>
+
+    <div class="card-body">
+      <!-- We want to dislay one row per newsletter sign-up; so b/c we have a list we should is loop through the
+      list and create a row for each sign-up. Here we will build in some 'Razor' code so this is all rendered
+      on the server, sent down to the browser, and displayed neatly. -->
+      @foreach (var signup in Model)
+       {
+          <div class="row">
+            <div class="col">
+                @signup.FirstName
+            </div>
+            <div class="col">
+                @signup.LastName
+            </div>
+            <div class="col">
+                @signup.EmailAddress
+            </div>
+          </div>
+       }      
+    </div>
+  </div>
+</div>
