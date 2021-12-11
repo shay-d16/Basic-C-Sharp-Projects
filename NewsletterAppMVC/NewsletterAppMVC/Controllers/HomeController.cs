@@ -83,29 +83,8 @@ namespace NewsletterAppMVC.Controllers
             }
         }
 
-        public ActionResult Admin()
-        {
-            using(NewsletterEntities db = new NewsletterEntities())
-            {
-                var signups = db.SignUps;
-                // A common practice on the controller is to map your database object to a view model. So let's create an empty
-                //  list with the 'SignupVm' data type: 
-                var signupVms = new List<SignupVm>();
-                // The data type is obvious here so it's best practice to use the 'var' keyword in this instance.
-
-                // Then we will loop through all the 'signups':
-                foreach (var signup in signups)
-                {
-                    // Here, we will map properties between objects
-                    var signupVm = new SignupVm();
-                    signupVm.FirstName = signup.FirstName;
-                    signupVm.LastName = signup.LastName;
-                    signupVm.EmailAddress = signup.EmailAddress;
-                    signupVms.Add(signupVm);
-                }
-                return View(signupVms);
-            }
-
+        //public ActionResult Admin()
+        //{            
             // Here, we'll create logic for pulling the information from the database and display it to the
             // admin, which we will do using ADO.NET
             //string queryString = @"SELECT Id, FirstName, LastName, EmailAddress, SocialSecurityNumber from SignUps";
@@ -151,6 +130,6 @@ namespace NewsletterAppMVC.Controllers
             // So we have populated a list of 'NewsletterSignUps' (which is our model or Business object), 
             // and the list is called 'signups'. Now, we will pass this list to the 'View'.
             
-        }
+      //}
     }
 }
