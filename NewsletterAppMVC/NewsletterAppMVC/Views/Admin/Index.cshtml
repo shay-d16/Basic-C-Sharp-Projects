@@ -6,9 +6,9 @@
 
 <div class="row no-gutters m-3">
   <div class="card col-sm-12 col-md-10 col-lg-6 mx-auto shadow">
-    
+
     <div class="card-header text-center">
-      <h5 class="m-0">Sign-ups</h5>      
+      <h5 class="m-0">Sign-ups</h5>
     </div>
 
     <div class="card-body">
@@ -16,19 +16,29 @@
       list and create a row for each sign-up. Here we will build in some 'Razor' code so this is all rendered
       on the server, sent down to the browser, and displayed neatly. -->
       @foreach (var signup in Model)
-       {
-          <div class="row">
-            <div class="col">
-                @signup.FirstName
-            </div>
-            <div class="col">
-                @signup.LastName
-            </div>
-            <div class="col">
-                @signup.EmailAddress
-            </div>
-          </div>
-       }      
+      {
+          using (Html.BeginForm("Unsubscribe", "Admin", FormMethod.Post))
+          {
+                    <input type="hidden" name="Id" value="@signup.Id" />
+                    <div class="row mb-3">
+                      <div class="col-2">
+                        @signup.FirstName
+                      </div>
+                      <div class="col-3">
+                        @signup.LastName
+                      </div>
+                      <div class="col-4">
+                        @signup.EmailAddress
+                      </div>
+                      <div class="col">
+                        <button type="submit" class="btn btn-danger btn-block">
+                          Unsubscribe
+                        </button>
+                      </div>
+                    </div>
+          }
+            
+      }
     </div>
   </div>
 </div>

@@ -17,10 +17,10 @@ namespace NewsletterAppMVC.Controllers
         // specific information that allows access to the database like the server name or credential info, etc.)
         // The best way to get a connection string for ADO.NET is to connect to the database inside
         // of Visual Studio.
-        private readonly string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Newsletter;
-                                            Integrated Security=True;Connect Timeout=30;Encrypt=False;
-                                            TrustServerCertificate=False;ApplicationIntent=ReadWrite;
-                                            MultiSubnetFailover=False";
+        //private readonly string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Newsletter;
+        //                                    Integrated Security=True;Connect Timeout=30;Encrypt=False;
+        //                                    TrustServerCertificate=False;ApplicationIntent=ReadWrite;
+        //                                    MultiSubnetFailover=False";
         // We used the 'readonly' keyword here to protect the connection string from changing anywhere in our code.
 
 

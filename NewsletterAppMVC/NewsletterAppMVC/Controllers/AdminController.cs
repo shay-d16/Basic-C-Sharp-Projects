@@ -1,4 +1,5 @@
-﻿using NewsletterAppMVC.ViewModels;
+﻿using NewsletterAppMVC.Models;
+using NewsletterAppMVC.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,11 @@ namespace NewsletterAppMVC.Controllers
         {
             using (NewsletterEntities db = new NewsletterEntities())
             {
-                var signups = db.SignUps;
+                //var signups = db.SignUps.Where(x => x.Removed == null).ToList();
+
+                var signups = (from c in db.SignUps
+                               where c.Removed == null
+                               select c).ToList();
                 // A common practice on the controller is to map your database object to a view model. So let's create an empty
                 //  list with the 'SignupVm' data type: 
                 var signupVms = new List<SignupVm>();
@@ -32,7 +37,17 @@ namespace NewsletterAppMVC.Controllers
                 }
                 return View(signupVms);
             }
+        }
 
+        public ActionResult Unsubscribe(int Id)
+        {
+            using (NewsletterEntities db = new NewsletterEntities())
+            {
+                var signup = db.SignUps.Find(Id);
+                signup.Removed = DateTime.Now;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 }
