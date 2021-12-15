@@ -42,7 +42,7 @@ namespace NewsletterAppMVC.Controllers
                 // is in the 'Shared' folder
             }
             else
-            // This else statement will save the data submitted to our local database using ADO.NET
+            // This else statement will save the data submitted to our local database using Entity Framework syntax.
             {
                 using (NewsletterEntities db = new NewsletterEntities())
                 {
@@ -55,6 +55,7 @@ namespace NewsletterAppMVC.Controllers
                     db.SaveChanges();
                 }
                 
+
                 //string queryString = @"INSERT INTO SignUps (FirstName, LastName, EmailAddress) VALUES
                 //                        (@FirstName, @LastName, @EmailAddress)";
                 // Remember, having parameters like this instead of "raw" user input helps prevent SQL Injection.
