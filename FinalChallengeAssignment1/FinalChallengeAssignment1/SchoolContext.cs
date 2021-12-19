@@ -18,4 +18,4 @@ namespace FinalChallengeAssignment1
         public DbSet<Grade> Grades { get; set; }
     }
 }
-}
+
